@@ -20,6 +20,7 @@ export const AboutUsText = styled.div`
   color: darkblue;
 
   & h3 {
+    margin-top: 60px;
     font-size: 32px;
   }
 

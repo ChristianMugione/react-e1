@@ -12,6 +12,7 @@ export const ServicesStyled = styled.div`
   box-shadow: 0 0 10px 3px #3f5573;
 
   & h2 {
+    margin-top: 60px;
     font-size: 36px;
     color: #000513;
     text-shadow: 0 0 15px white;

@@ -1,24 +1,35 @@
 import React from 'react';
 import { StyledA, StyledLi, StyledUl } from '../styles/NavBarStyles';
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
+
   return (
+    // <StyledUl isOpen={isOpen}>
     <StyledUl>
       <StyledLi>
-        <StyledA>Inicio</StyledA>
+        <StyledA>
+          <Link to="/">Inicio</Link>
+        </StyledA>
       </StyledLi>
       <StyledLi>
-        <StyledA>Nosotros</StyledA>
+        <StyledA>
+          <Link to="/aboutus">Nosotros</Link>
+        </StyledA>
       </StyledLi>
       <StyledLi>
-        <StyledA>Servicios</StyledA>
+        <StyledA>
+          <Link to="/services">Servicios</Link>
+        </StyledA>
       </StyledLi>
       <StyledLi>
-        <StyledA>Contacto</StyledA>
+        <StyledA>
+          <Link to="/products">Productos</Link>
+        </StyledA>
       </StyledLi>
     </StyledUl>
     
   )
-}
+} 
 
 export default NavBar;
