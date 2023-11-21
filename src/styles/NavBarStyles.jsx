@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledUl = styled.ul`
   display: flex;
@@ -10,22 +9,22 @@ export const StyledUl = styled.ul`
   right: 0;
   background-color: #fafafa50;
 
+  li {
+    list-style: none;
+    color: steelblue;
+  }
+
+  a {
+    font-size: 20px;
+  }
+
   @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     top: unset;
     right: unset;
     position: relative;
-    gap: 8px;
+    gap: 12px;
     background-color: transparent;
   }
-  `;
-
-export const StyledLi = styled.li`
-  list-style: none;
-  color: steelblue;
-`;
-
-export const StyledA = styled.a`
-  font-size: 20px;
 `;

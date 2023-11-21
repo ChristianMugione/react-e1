@@ -1,11 +1,11 @@
 import { AboutUsText, StyledAboutUs } from "../styles/AboutusStyles"
 import tallerMotorhomes from "../assets/img/nuestra-fabrica.png"
 
-export const AboutUsSection = () => {
+export const AboutUsSection = () => { 
   return (
     <StyledAboutUs>
       <img 
-      src={tallerMotorhomes} 
+      src={tallerMotorhomes}  
       alt="Taller de Motorhomes" 
       />
       <AboutUsText>

@@ -1,12 +1,28 @@
-:root {
-  margin: 0;
-  padding: 0;
-}
-
 .footer {
   width: 100%;
   background-color: lightgray;
   padding: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.footer img {
+  /* width: 100px; */
+  height: 100px;
+}
+
+.contact {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.contact p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }

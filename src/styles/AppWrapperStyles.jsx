@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledAppWrapper = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
   width: 100vw;
   display: flex;
   flex-direction: column;
