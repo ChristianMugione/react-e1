@@ -2,10 +2,10 @@ import React from "react";
 import logo from "../assets/img/ruta-camper-logo.png";
 import "../styles/Footer.css";
 import {
-  BsGeoAltFill,
-  BsWhatsapp,
-  BsEnvelope,
-  BsTelephoneFill,
+  BsTwitter,
+  BsInstagram,
+  BsYoutube,
+  BsFacebook,
 } from "react-icons/bs";
 
 export const Footer = () => (
@@ -13,20 +13,20 @@ export const Footer = () => (
     <img src={logo} alt="" />
     <div className="contact">
       <p>
-        <BsGeoAltFill />
-        <span>Thompson 333, Bahía Blanca</span>
+        <BsTwitter />
+        <span>rutacamper</span>
       </p>
       <p>
-        <BsWhatsapp />
-        <span>+54 291 461-6130</span>
+        <BsInstagram />
+        <span>rutacamper</span>
       </p>
       <p>
-        <BsEnvelope />
-        <span>contacto@carpiana.com</span>
+        <BsYoutube />
+        <span>rutacamper</span>
       </p>
       <p>
-        <BsTelephoneFill />
-        <span>+54 291 461-6130</span>
+        <BsFacebook />
+        <span>rutacamper</span>
       </p>
     </div>
   </div>

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-export const ServicesStyled = styled.div`
+export const ServicesStyled = styled.section`
   width: 100%;
   padding: 30px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
   gap: 30px;
   background: linear-gradient( 45deg, #3f5573, #7395d9 );
-  box-shadow: 0 0 10px 3px #3f5573;
 
   & h2 {
     margin-top: 60px;

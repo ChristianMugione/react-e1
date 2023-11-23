@@ -1,28 +1,26 @@
 import { StyledUl } from "../styles/NavBarStyles";
 import { Link } from "react-router-dom";
+import { useNavBar } from "./NavBarContext";
 
 const NavBar = () => {
+  const { closeMenu } = useNavBar();
+  
   return (
     <StyledUl>
       <li>
-        <a>
-          <Link to="/">Inicio</Link>
-        </a>
+        <Link to="/" onClick={closeMenu}>Inicio</Link>
       </li>
       <li>
-        <a>
-          <Link to="/aboutus">Nosotros</Link>
-        </a>
+        <Link to="/aboutus" onClick={closeMenu}>Nosotros</Link>
       </li>
       <li>
-        <a>
-          <Link to="/services">Servicios</Link>
-        </a>
+        <Link to="/services" onClick={closeMenu}>Servicios</Link>
       </li>
       <li>
-        <a>
-          <Link to="/products">Productos</Link>
-        </a>
+        <Link to="/products" onClick={closeMenu}>Productos</Link>
+      </li>
+      <li>
+        <Link to="/contact" onClick={closeMenu}>Contacto</Link>
       </li>
     </StyledUl>
   );

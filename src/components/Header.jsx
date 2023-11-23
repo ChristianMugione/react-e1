@@ -5,19 +5,23 @@ import NavBar from "./NavBar";
 import styled from "styled-components";
 import { useNavBar } from "./NavBarContext";
 
-const StyledHeader = styled.div`
-  display: flex;
+const StyledHeader = styled.header`
   width: 100%;
+
+  display: flex;
+  padding: 5px 0;
   justify-content: space-between;
+
   position: fixed;
   top: 0;
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 70%);
 
+  background-color: rgba(255, 255, 255, 70%);
+  
   & img {
     width: 100px;
+    margin-left: 20px;
   }
-
+  
   @media (min-width: 992px) {
     top: 5px;
     width: 960px;
@@ -33,14 +37,38 @@ const StyledHeader = styled.div`
   }
 `;
 
+const Blurer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgb(50,50,50,80%);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export const Header = () => {
-  const { isOpen } = useNavBar();
+  const { isOpen, closeMenu, openMenu } = useNavBar();
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  })
 
   return (
+    <>
+    {isOpen && <Blurer onClick={closeMenu} />}
     <StyledHeader>
       <img src={logo} alt="Logo" />
       <BurgerMenu />
-      <NavBar />
+      {isOpen && <NavBar />}
     </StyledHeader>
+    </>
   );
 };

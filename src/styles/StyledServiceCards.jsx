@@ -9,7 +9,7 @@ export const StyledServiceCards = styled.div`
   gap: 18px;
   /* flex-wrap: wrap; */
 
-  & i {
+  i {
     font-size: 2em;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(200,200,200,1) 0%, rgba(180,180,180,1) 100%);

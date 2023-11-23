@@ -1,22 +1,31 @@
 .footer {
   width: 100%;
   background-color: lightgray;
-  padding: 20px;
+  /* padding: 20px; */
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+
+  @media (min-width: 350px) {
+    flex-direction: row;
+  }
 }
 
 .footer img {
-  /* width: 100px; */
-  height: 100px;
+  width: 100px;
+  margin: 8px;
+  /* height: 100px; */
 }
 
 .contact {
-  width: 50%;
+  width: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 8px;
 }
 
 .contact p {

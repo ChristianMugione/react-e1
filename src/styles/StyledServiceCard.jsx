@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledServiceCard = styled.div`
-  width: 25%;
+  /* width: 25%; */
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   /* justify-content: flex-start; */

@@ -6,12 +6,23 @@ const NavBarProvider = ({ children }) => {
   const [isOpen, setisOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log("toggled");
     setisOpen(!isOpen);
   }
 
+  const closeMenu = () => {
+    if (isOpen && window.innerWidth < 768) {
+      toggleMenu();
+    }
+  }
+
+  const openMenu = () => {
+    if (!isOpen) {
+      toggleMenu();
+    }
+  }
+
   return (
-    <NavBarContext.Provider value={{ isOpen, toggleMenu }}>
+    <NavBarContext.Provider value={{ isOpen, toggleMenu, closeMenu, openMenu }}>
       { children }
     </NavBarContext.Provider>
   )
