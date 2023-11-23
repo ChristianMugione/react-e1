@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 const NavBarContext = createContext();
 
 const NavBarProvider = ({ children }) => {
-  const [isOpen, setisOpen] = useState(false);
+  const [isOpen, setisOpen] = useState(true);
 
   const toggleMenu = () => {
     setisOpen(!isOpen);
