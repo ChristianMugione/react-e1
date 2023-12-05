@@ -1,0 +1,20 @@
+E3: Lógica de productos y carrito - Redux Toolkit
+En esta tercera entrega, trabajaremos sobre la lógica de productos y carrito de nuestra página web. Deberán:
+
+👉 Agregar productos al carrito de manera dinámica.
+
+👉 Manejar las cantidades del producto elegido en el carrito de manera dinámica.
+
+👉 Agregar una funcionalidad para borrar productos del carrito de manera individual o todos juntos de manera grupal.
+
+👉 Agregar funcionalidad de finalizar compra (Se debe vaciar el carrito)
+
+👉 agregar y borrar prods y finalizar compra, deberán confirmarse con un modal (No "alerts" ni "confirms").
+
+Finalizadas:
+
+👉 Renderizar los productos de manera dinámica en la sección de productos que ya tenían lista de la entrega anterior.
+👉 Realizar la lógica de filtros.
+
+
+//

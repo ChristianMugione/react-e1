@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/img/ruta-camper-logo.png";
 import { BurgerMenu } from "./BurgerMenu";
 import NavBar from "./NavBar";
 import styled from "styled-components";
 import { useNavBar } from "./NavBarContext";
+import { BsCart } from "react-icons/bs";
+import { Cart } from "./Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCart } from "../store/storeSlices";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -16,6 +20,18 @@ const StyledHeader = styled.header`
   top: 0;
 
   background-color: rgba(255, 255, 255, 70%);
+
+  .nav-cart{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .cart-icon {
+    font-size: 28px;
+    color: #222;
+    cursor: pointer;
+  }
   
   & img {
     width: 100px;
@@ -52,6 +68,9 @@ const Blurer = styled.div`
 
 export const Header = () => {
   const { isOpen, closeMenu, openMenu } = useNavBar();
+  // const [ cartOpen, setCartOpen ] = useState(false);
+  const dispatch = useDispatch();
+  const isCartOpened = useSelector(state => state.cartOpened.cartIsOpened)
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
@@ -61,14 +80,22 @@ export const Header = () => {
     }
   })
 
+  const toggleCartOpened = () => {
+    dispatch(toggleCart());
+  }
+  
   return (
     <>
     {isOpen && <Blurer onClick={closeMenu} />}
     <StyledHeader>
       <img src={logo} alt="Logo" />
-      <BurgerMenu />
+      <div className="nav-cart">
+      <BurgerMenu /> 
       {isOpen && <NavBar />}
+      <BsCart className="cart-icon" onClick={toggleCartOpened}/>
+      </div>
     </StyledHeader>
+      {isCartOpened && <Cart />}
     </>
   );
 };
