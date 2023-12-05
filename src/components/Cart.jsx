@@ -1,19 +1,38 @@
 import { BsXCircle } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import styled from "styled-components"
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import { toggleCart } from "../store/storeSlices";
+import { CartItem } from "./CartItem";
 
 export const Cart = () => {
-  const cartItems = useSelector(state => state.cartList.products)
+  const cartItems = useSelector((state) => state.cartList.products);
+  const dispatch = useDispatch();
+
+  const doToggleCart = () => {
+    dispatch(toggleCart());
+  };
 
   return (
     <StyledCart>
-      <BsXCircle className="close-btn" onClick={toggleCart} />
-    <h2>Su Carrito</h2>
-    <p>{cartItems}</p>
-
+      <BsXCircle className="close-btn" onClick={doToggleCart} />
+      <h2>Su Carrito</h2>
+      <p>{cartItems}</p>
+      <div className="cart-items">
+        {cartItems.map((item) => {
+          return (
+            <CartItem
+              key={item.key}
+              index={item.key}
+              image={item.image}
+              title={item.title}
+              price={item.price}
+            />
+          );
+        })}
+      </div>
     </StyledCart>
-  )
-}
+  );
+};
 
 const StyledCart = styled.div`
   position: absolute;
