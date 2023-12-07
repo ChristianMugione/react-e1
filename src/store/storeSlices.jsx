@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { totalCalc } from "./SlicesFunctions";
 
 const initialState = {
   products: [
@@ -60,32 +61,58 @@ export const productSlice = createSlice({
 
 export const cartSlice = createSlice({
   name: "cartList",
-  initialState: { products: [],
-                  totalCart: 0},
+  initialState: { products: [], totalCart: 0 },
   reducers: {
     addItem: (state, action) => {
-      const {index, image, title, price} = action.payload;
-      if (state.products.some( item => item.index === index )) {
-        const itemModified = state.products.find( item => item.index === index)
-        itemModified.quantity += 1
+      const { index, image, title, price } = action.payload;
+      if (state.products.some((item) => item.index === index)) {
+        const itemModified = state.products.find(
+          (item) => item.index === index,
+        );
+        itemModified.quantity += 1;
       } else {
-        state.products = [...state.products, {...action.payload, quantity: 1}]
+        state.products = [
+          ...state.products,
+          { ...action.payload, quantity: 1 },
+        ];
       }
-      state.totalCart += price
+      // state.totalCart += price;
+      state.totalCart = totalCalc(state.products);
     },
     subsItem: (state, action) => {
-      const itemModified = state.products.find( item => item.index === action.payload)
+      const itemModified = state.products.find(
+        (item) => item.index === action.payload,
+      );
       if (itemModified.quantity > 1) {
-        itemModified.quantity -= 1
-        state.totalCart -= itemModified.price
+        itemModified.quantity -= 1;
+        // state.totalCart -= itemModified.price;
+        state.totalCart = totalCalc(state.products);
       }
       // console.log(state.products);
     },
     addOneMoreItem: (state, action) => {
-      const itemModified = state.products.find( item => item.index === action.payload)
-      itemModified.quantity += 1
-      state.totalCart += itemModified.price
-    }
+      const itemModified = state.products.find(
+        (item) => item.index === action.payload,
+      );
+      itemModified.quantity += 1;
+      // state.totalCart += itemModified.price;
+      state.totalCart = totalCalc(state.products);
+    },
+    removeOneItem: (state, action) => {
+      const newCartItems = state.products.filter(
+        (item) => item.index !== action.payload,
+      );
+      state.products = [...newCartItems];
+      state.totalCart = totalCalc(state.products);
+    },
+    emptyCart: (state) => {
+      state.products = [];
+      state.totalCart = totalCalc(state.products);
+    },
+    processTheCart: (state) => {
+      state.products = [];
+      state.totalCart = totalCalc(state.products);
+    },
   },
 });
 
@@ -99,5 +126,12 @@ export const cartOpen = createSlice({
   },
 });
 
-export const { addItem, subsItem, addOneMoreItem } = cartSlice.actions;
+export const {
+  addItem,
+  subsItem,
+  addOneMoreItem,
+  removeOneItem,
+  emptyCart,
+  processTheCart,
+} = cartSlice.actions;
 export const { toggleCart } = cartOpen.actions;

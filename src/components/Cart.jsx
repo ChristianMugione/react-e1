@@ -1,7 +1,7 @@
 import { BsXCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { toggleCart } from "../store/storeSlices";
+import { toggleCart, emptyCart, processTheCart } from "../store/storeSlices";
 import { CartItem } from "./CartItem";
 
 export const Cart = () => {
@@ -13,29 +13,39 @@ export const Cart = () => {
     dispatch(toggleCart());
   };
 
+  const deleteAllItemsFromCart = () => {
+    dispatch(emptyCart());
+  };
+
+  const processCart = () => {
+    dispatch(processTheCart());
+  };
+
   return (
     <StyledCart>
       <BsXCircle className="close-btn" onClick={doToggleCart} />
       <h2>Su Carrito</h2>
-      
+
       <div className="cart-items">
         {cartItems.map((item) => {
           return (
             <CartItem
-            key = {item.index}
-            index = {item.index}
-            image = {item.image}
-            title = {item.title}
-            price = {item.price}
-            quantity = {item.quantity}
+              key={item.index}
+              index={item.index}
+              image={item.image}
+              title={item.title}
+              price={item.price}
+              quantity={item.quantity}
             />
-            );
-          })}
+          );
+        })}
 
-          
         <div>Total: {total}</div>
+        <div className="bottom-buttons">
+          <button onClick={deleteAllItemsFromCart}>VACIAR CARRITO</button>
+          <button onClick={processCart}>FINALIZAR COMPRA</button>
+        </div>
       </div>
-
     </StyledCart>
   );
 };
