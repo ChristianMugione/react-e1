@@ -7,9 +7,9 @@ export const ProductCard = ({index, image, title, price}) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {
-    const newItem = [index, image, title, price];
+    const newItem = {index, image, title, price};
     dispatch(addItem(newItem))
-  }
+  } 
 
   return (
   <StyledProduct>

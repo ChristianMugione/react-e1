@@ -6,6 +6,7 @@ import { CartItem } from "./CartItem";
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.cartList.products);
+  const total = useSelector((state) => state.cartList.totalCart);
   const dispatch = useDispatch();
 
   const doToggleCart = () => {
@@ -16,20 +17,25 @@ export const Cart = () => {
     <StyledCart>
       <BsXCircle className="close-btn" onClick={doToggleCart} />
       <h2>Su Carrito</h2>
-      <p>{cartItems}</p>
+      
       <div className="cart-items">
         {cartItems.map((item) => {
           return (
             <CartItem
-              key={item.key}
-              index={item.key}
-              image={item.image}
-              title={item.title}
-              price={item.price}
+            key = {item.index}
+            index = {item.index}
+            image = {item.image}
+            title = {item.title}
+            price = {item.price}
+            quantity = {item.quantity}
             />
-          );
-        })}
+            );
+          })}
+
+          
+        <div>Total: {total}</div>
       </div>
+
     </StyledCart>
   );
 };
@@ -42,16 +48,26 @@ const StyledCart = styled.div`
   background-color: azure;
   padding: 30px 0;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
 
   .close-btn {
     font-size: 22px;
     position: absolute;
-    top: 20px;
+    top: 80px;
     right: 20px;
     cursor: pointer;
   }
 
   h2 {
     margin-top: 60px;
+  }
+
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
   }
 `;

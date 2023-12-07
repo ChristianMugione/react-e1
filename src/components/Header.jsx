@@ -21,6 +21,8 @@ const StyledHeader = styled.header`
 
   background-color: rgba(255, 255, 255, 70%);
 
+  z-index: 2;
+
   .nav-cart{
     display: flex;
     align-items: center;

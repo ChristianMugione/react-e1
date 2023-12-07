@@ -17,4 +17,5 @@ Finalizadas:
 👉 Realizar la lógica de filtros.
 
 
+revisar scroll horizontal
 //

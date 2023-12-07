@@ -60,12 +60,32 @@ export const productSlice = createSlice({
 
 export const cartSlice = createSlice({
   name: "cartList",
-  initialState: { products: [] },
+  initialState: { products: [],
+                  totalCart: 0},
   reducers: {
     addItem: (state, action) => {
-      const [id, image, title, price] = action.payload;
-      state.products = [...state.products, action.payload];
+      const {index, image, title, price} = action.payload;
+      if (state.products.some( item => item.index === index )) {
+        const itemModified = state.products.find( item => item.index === index)
+        itemModified.quantity += 1
+      } else {
+        state.products = [...state.products, {...action.payload, quantity: 1}]
+      }
+      state.totalCart += price
     },
+    subsItem: (state, action) => {
+      const itemModified = state.products.find( item => item.index === action.payload)
+      if (itemModified.quantity > 1) {
+        itemModified.quantity -= 1
+        state.totalCart -= itemModified.price
+      }
+      // console.log(state.products);
+    },
+    addOneMoreItem: (state, action) => {
+      const itemModified = state.products.find( item => item.index === action.payload)
+      itemModified.quantity += 1
+      state.totalCart += itemModified.price
+    }
   },
 });
 
@@ -79,5 +99,5 @@ export const cartOpen = createSlice({
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, subsItem, addOneMoreItem } = cartSlice.actions;
 export const { toggleCart } = cartOpen.actions;

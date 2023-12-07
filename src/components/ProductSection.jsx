@@ -28,7 +28,7 @@ export const ProductSection = () => {
           title = {prod.title}
           price = {prod.price}
           />
-      ):""})}
+      ):""})} 
     </div>
   </StyledProductSection>
 )};

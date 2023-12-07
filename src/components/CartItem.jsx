@@ -1,12 +1,54 @@
 import React from "react";
+import styled from "styled-components";
+import { addOneMoreItem, subsItem } from "../store/storeSlices";
+import { useDispatch } from "react-redux";
 
-export const CartItem = ({ index, image, title, price }) => {
+export const CartItem = (props) => {
+  const dispatch = useDispatch();
+  // console.log(props);
+
+  const substractItem = () => {
+    dispatch(subsItem(props.index))
+  }
+
+  const addOneItem = () => {
+    dispatch(addOneMoreItem(props.index))
+  }
+
   return (
-    <>
-      {console.log(index, image, title, price)}
-      <img src={image} alt={title} />
-      <p>titulo: {title}</p>
-      <p>precio: {price}</p>
-    </>
+    <CartItemStyled>
+      <img src={props.image} alt={props.title} />
+      <p>{props.title}</p>
+      <p>
+        <button onClick={substractItem}>-</button>
+          {props.quantity}
+        <button onClick={addOneItem}>+</button>
+      </p>
+      <p>{props.price}</p>
+    </CartItemStyled>
   );
 };
+
+const CartItemStyled = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-right: 8px;
+  gap: 8px;
+  background-color: aliceblue;
+  border: 1px solid gray;
+  border-radius: 12px;
+  overflow: hidden;
+
+  img{
+    width: 100px;
+    border-radius: 8px;
+  }
+
+  button{
+    padding: 2px;
+    background-color: white;
+    color: black;
+    width: 20px;
+  }
+`;
