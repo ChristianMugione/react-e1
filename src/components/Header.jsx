@@ -33,7 +33,9 @@ const StyledHeader = styled.header`
     font-size: 28px;
     color: #222;
     cursor: pointer;
+    position: relative;
   }
+
   
   & img {
     width: 100px;

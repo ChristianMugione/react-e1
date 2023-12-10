@@ -1,15 +1,18 @@
 .footer {
   width: 100%;
   background-color: lightgray;
-  /* padding: 20px; */
+
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding: 10px 0;
 
-  @media (min-width: 350px) {
+  overflow: hidden;
+}
+
+@media (min-width: 350px) {
+  .footer {
     flex-direction: row;
   }
 }
@@ -28,7 +31,7 @@
   gap: 8px;
 }
 
-.contact p {
+.contact li {
   display: flex;
   align-items: center;
   gap: 4px;

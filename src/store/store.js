@@ -7,4 +7,4 @@ export default configureStore({
     cartList: cartSlice.reducer,
     cartOpened: cartOpen.reducer,
   },
-}); 
+});

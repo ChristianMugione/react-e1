@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledProductSection = styled.div`
   background-color: aliceblue;
-  padding: 20px 0;
+  /* padding: 20px 0; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;

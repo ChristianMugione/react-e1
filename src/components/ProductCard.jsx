@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyledProduct } from '../styles/ProductStyles'
 import { useDispatch } from 'react-redux';
 import { addItem } from '../store/storeSlices';
+import { ModalConfirm } from './ModalConfirm';
 
 export const ProductCard = ({index, image, title, price}) => {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmAdd = () => {
+    setShowModal(true)
+  }
 
   const addToCart = () => {
     const newItem = {index, image, title, price};
     dispatch(addItem(newItem))
+    setShowModal(false);
   } 
+
+  const cancelAdd = () => {
+    setShowModal(false)
+  }
 
   return (
   <StyledProduct>
@@ -18,7 +29,8 @@ export const ProductCard = ({index, image, title, price}) => {
     <h3 className='title'>{title}</h3>
     <p className='price'>ARS {price}</p>
     </div>
-    <button onClick={addToCart}>Agregar</button>
+    <button onClick={confirmAdd}>Agregar</button>
+    {showModal && (<ModalConfirm msg="¿Está seguro de agregar el producto?" onConfirm={addToCart} onCancel={cancelAdd} />)}
   </StyledProduct>
 
 )};

@@ -1,8 +1,8 @@
 E3: Lógica de productos y carrito - Redux Toolkit
 
-👉 agregar productos, borrar prods y finalizar compra, deberán confirmarse con un modal (No "alerts" ni "confirms").
-
 👉 revisar scroll horizontal
+👉 agregar mas productos (hardcodeados)
+👉 detalles estéticos
 
 Finalizadas:
 
@@ -12,5 +12,7 @@ Finalizadas:
 👉 Manejar las cantidades del producto elegido en el carrito de manera dinámica.
 👉 Agregar una funcionalidad para borrar productos del carrito de manera individual o todos juntos de manera grupal.
 👉 Agregar funcionalidad de finalizar compra (Se debe vaciar el carrito)
+👉 agregar productos, borrar prods y finalizar compra, deberán confirmarse con un modal (No "alerts" ni "confirms").
+👉 modal confirmacion agregar productos
 
 //

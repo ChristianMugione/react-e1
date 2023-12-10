@@ -11,23 +11,23 @@ import {
 export const Footer = () => (
   <div className="footer">
     <img src={logo} alt="" />
-    <div className="contact">
-      <p>
+    <ul className="contact">
+      <li>
         <BsTwitter />
         <span>rutacamper</span>
-      </p>
-      <p>
+      </li>
+      <li>
         <BsInstagram />
         <span>rutacamper</span>
-      </p>
-      <p>
+      </li>
+      <li>
         <BsYoutube />
         <span>rutacamper</span>
-      </p>
-      <p>
+      </li>
+      <li>
         <BsFacebook />
         <span>rutacamper</span>
-      </p>
-    </div>
+      </li>
+    </ul>
   </div>
 );
