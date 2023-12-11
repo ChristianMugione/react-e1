@@ -4,13 +4,13 @@ export const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   position: absolute;
-
   top: 48px;
-
+  left: 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 70%);
-  
+
   padding-inline-start: 0;
 
   li {
@@ -27,9 +27,13 @@ export const StyledUl = styled.ul`
     width: 80%;
     height: 1px;
     content: " ";
-    background: radial-gradient(circle,rgba(5, 5, 5, .5) 0%,  rgba(255,255,255,0) 100%)
+    background: radial-gradient(
+      circle,
+      rgba(5, 5, 5, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
-  
+
   a {
     font-size: 20px;
     color: #222222;

@@ -8,13 +8,19 @@ export const StyledProductSection = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  background: linear-gradient( 45deg, #3f5573, #7395d9 );
-  
+  background: linear-gradient(45deg, #3f5573, #7395d9);
+
   h2 {
     margin-top: 60px;
-    font-size: 2em;
+    font-size: 1.5em;
   }
-  
+
+  button {
+    padding: 4px;
+    font-size: 0.8em;
+    margin: 0 2px;
+  }
+
   .cards {
     width: 90%;
     display: flex;
@@ -22,10 +28,15 @@ export const StyledProductSection = styled.div`
     flex-wrap: wrap;
     gap: 8px;
   }
-  
-  @media (max-width: 992px) {
-    flex-direction: column;
-    align-items: center;
-    
+
+  @media (min-width: 576px) {
+    h2 {
+      font-size: 1.8em;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 6px;
+    }
   }
 `;

@@ -1,11 +1,12 @@
 E3: Lógica de productos y carrito - Redux Toolkit
 
-👉 revisar scroll horizontal
 👉 agregar mas productos (hardcodeados)
 👉 detalles estéticos
 
 Finalizadas:
 
+👉 abrir menu cierra carrito y viceversa
+👉 revisar scroll horizontal
 👉 Renderizar los productos de manera dinámica en la sección de productos que ya tenían lista de la entrega anterior.
 👉 Realizar la lógica de filtros.
 👉 Agregar productos al carrito de manera dinámica.

@@ -1,7 +1,7 @@
-import React from 'react';
-import { useNavBar } from './NavBarContext';
-import styled from 'styled-components';
-import { BsList } from 'react-icons/bs'
+import React from "react";
+import { useNavBar } from "./NavBarContext";
+import styled from "styled-components";
+import { BsList } from "react-icons/bs";
 
 const BurgerIcon = styled.div`
   cursor: pointer;
@@ -26,5 +26,5 @@ export const BurgerMenu = () => {
     <BurgerIcon onClick={toggleMenu}>
       <BsList />
     </BurgerIcon>
-  )
+  );
 };

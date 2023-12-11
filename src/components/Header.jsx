@@ -19,16 +19,16 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
 
-  background-color: rgba(255, 255, 255, 70%);
+  background-color: rgba(235, 235, 255, 95%);
 
   z-index: 2;
 
-  .nav-cart{
+  .nav-cart {
     display: flex;
     align-items: center;
     margin-right: 20px;
   }
-  
+
   .cart-icon {
     font-size: 28px;
     color: #222;
@@ -36,12 +36,11 @@ const StyledHeader = styled.header`
     position: relative;
   }
 
-  
   & img {
     width: 100px;
     margin-left: 20px;
   }
-  
+
   @media (min-width: 992px) {
     top: 5px;
     width: 960px;
@@ -60,7 +59,7 @@ const StyledHeader = styled.header`
 const Blurer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgb(50,50,50,80%);
+  background-color: rgb(50, 50, 50, 80%);
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +73,7 @@ export const Header = () => {
   const { isOpen, closeMenu, openMenu } = useNavBar();
   // const [ cartOpen, setCartOpen ] = useState(false);
   const dispatch = useDispatch();
-  const isCartOpened = useSelector(state => state.cartOpened.cartIsOpened)
+  const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
@@ -82,23 +81,29 @@ export const Header = () => {
     } else {
       closeMenu();
     }
-  })
+  });
 
   const toggleCartOpened = () => {
     dispatch(toggleCart());
-  }
-  
+  };
+
   return (
     <>
-    {isOpen && <Blurer onClick={closeMenu} />}
-    <StyledHeader>
-      <img src={logo} alt="Logo" />
-      <div className="nav-cart">
-      <BurgerMenu /> 
-      {isOpen && <NavBar />}
-      <BsCart className="cart-icon" onClick={toggleCartOpened}/>
-      </div>
-    </StyledHeader>
+      {isOpen && <Blurer onClick={closeMenu} />}
+      <StyledHeader>
+        <img src={logo} alt="Logo" />
+        <div className="nav-cart">
+          <BurgerMenu />
+          {isOpen && <NavBar />}
+          <BsCart
+            className="cart-icon"
+            onClick={() => {
+              toggleCartOpened();
+              closeMenu();
+            }}
+          />
+        </div>
+      </StyledHeader>
       {isCartOpened && <Cart />}
     </>
   );
