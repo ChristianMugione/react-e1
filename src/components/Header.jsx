@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/img/ruta-camper-logo.png";
 import { BurgerMenu } from "./BurgerMenu";
 import NavBar from "./NavBar";
@@ -93,11 +93,7 @@ export const Header = () => {
   // const [ cartOpen, setCartOpen ] = useState(false);
   const dispatch = useDispatch();
   const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
-  const cartList = useSelector((state) => state.cartList.products);
-  let itemQuantity;
-  itemQuantity = cartList.map( item => {
-    itemQuantity += item.quantity;
-  });
+  const cartItemQuantity = useSelector((state) => state.cartList.quantityCart);
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
@@ -126,8 +122,10 @@ export const Header = () => {
                 toggleCartOpened();
                 closeMenu();
               }}
-              />
-            {itemQuantity>0 && (<span className="item-quantity">{itemQuantity}</span>)}
+            />
+            {cartItemQuantity > 0 && (
+              <span className="item-quantity">{cartItemQuantity}</span>
+            )}
           </div>
         </div>
       </StyledHeader>

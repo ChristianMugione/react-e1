@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { totalCalc } from "./SlicesFunctions";
+import { totalCalc, cartQuantity } from "./SlicesFunctions";
 
 const initialState = {
   products: [
@@ -61,7 +61,7 @@ export const productSlice = createSlice({
 
 export const cartSlice = createSlice({
   name: "cartList",
-  initialState: { products: [], totalCart: 0 },
+  initialState: { products: [], totalCart: 0, quantityCart: 0 },
   reducers: {
     addItem: (state, action) => {
       const { index, image, title, price } = action.payload;
@@ -78,6 +78,7 @@ export const cartSlice = createSlice({
       }
       // state.totalCart += price;
       state.totalCart = totalCalc(state.products);
+      state.quantityCart = cartQuantity(state.products);
     },
     subsItem: (state, action) => {
       const itemModified = state.products.find(
@@ -87,6 +88,7 @@ export const cartSlice = createSlice({
         itemModified.quantity -= 1;
         // state.totalCart -= itemModified.price;
         state.totalCart = totalCalc(state.products);
+        state.quantityCart = cartQuantity(state.products);
       }
       // console.log(state.products);
     },
@@ -97,6 +99,7 @@ export const cartSlice = createSlice({
       itemModified.quantity += 1;
       // state.totalCart += itemModified.price;
       state.totalCart = totalCalc(state.products);
+      state.quantityCart = cartQuantity(state.products);
     },
     removeOneItem: (state, action) => {
       const newCartItems = state.products.filter(
@@ -104,14 +107,17 @@ export const cartSlice = createSlice({
       );
       state.products = [...newCartItems];
       state.totalCart = totalCalc(state.products);
+      state.quantityCart = cartQuantity(state.products);
     },
     emptyCart: (state) => {
       state.products = [];
       state.totalCart = totalCalc(state.products);
+      state.quantityCart = cartQuantity(state.products);
     },
     processTheCart: (state) => {
       state.products = [];
       state.totalCart = totalCalc(state.products);
+      state.quantityCart = cartQuantity(state.products);
     },
   },
 });
