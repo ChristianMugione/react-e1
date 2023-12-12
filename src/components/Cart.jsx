@@ -114,7 +114,7 @@ const StyledCart = styled.div`
   }
 
   h2 {
-    margin-top: 60px;
+    margin-top: 80px;
   }
 
   .cart-items {

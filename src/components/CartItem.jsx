@@ -23,7 +23,7 @@ export const CartItem = (props) => {
   return (
     <CartItemStyled>
       <img src={props.image} alt={props.title} />
-      <p>{props.title}</p>
+      <p className="title">{props.title}</p>
       <p>
         <button onClick={substractItem}>-</button>
         {props.quantity}
@@ -49,7 +49,12 @@ const CartItemStyled = styled.div`
 
   img {
     width: 100px;
+    max-width: 15%;
     border-radius: 8px;
+  }
+
+  .title {
+    max-width: 30%;
   }
 
   button {
