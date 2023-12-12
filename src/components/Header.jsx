@@ -29,11 +29,30 @@ const StyledHeader = styled.header`
     margin-right: 20px;
   }
 
+  .cart-icon-container {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+  }
+
   .cart-icon {
     font-size: 28px;
     color: #222;
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .item-quantity {
+    background-color: red;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    top: -4px;
+    right: -4px;
   }
 
   & img {
@@ -74,6 +93,11 @@ export const Header = () => {
   // const [ cartOpen, setCartOpen ] = useState(false);
   const dispatch = useDispatch();
   const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
+  const cartList = useSelector((state) => state.cartList.products);
+  let itemQuantity;
+  itemQuantity = cartList.map( item => {
+    itemQuantity += item.quantity;
+  });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
@@ -95,13 +119,16 @@ export const Header = () => {
         <div className="nav-cart">
           <BurgerMenu />
           {isOpen && <NavBar />}
-          <BsCart
-            className="cart-icon"
-            onClick={() => {
-              toggleCartOpened();
-              closeMenu();
-            }}
-          />
+          <div className="cart-icon-container">
+            <BsCart
+              className="cart-icon"
+              onClick={() => {
+                toggleCartOpened();
+                closeMenu();
+              }}
+              />
+            {itemQuantity>0 && (<span className="item-quantity">{itemQuantity}</span>)}
+          </div>
         </div>
       </StyledHeader>
       {isCartOpened && <Cart />}

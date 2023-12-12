@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const Contact = () => {
   return (
     <StyledContact>
-      <h2>Contact</h2>
+      <h2>Contacto</h2>
       <form id="contact">
         <div className="row">
           <label htmlFor="name">Nombre:</label>
@@ -31,9 +31,9 @@ export const Contact = () => {
 
 const StyledContact = styled.section`
     background: linear-gradient( 45deg, #3f5573, #7395d9 );
-    padding-top: 80px;
+    padding-top: 60px;
     width: 100%;
-    min-height: calc( 100vh - 170px );
+    min-height: calc( 100vh - 130px );
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,16 +49,17 @@ const StyledContact = styled.section`
       flex-direction: column;
       background-color: #3f5573;
       gap: 8px;
-      font-size: 26px;
+      font-size: 22px;
       color: #000513;
-      width: 95%;
-      max-width: 400px;
+      width: 90%;
+      max-width: 310px;
       padding: 8px;
       box-shadow: 0 0 10px #000513;
     }
 
     input {
       height: 30px;
+      width: 100%;
       /* min-width: 250px; */
       background-color: #7395d9;
       border-radius: 8px;

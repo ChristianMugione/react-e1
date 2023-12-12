@@ -20,7 +20,6 @@ export const StyledProduct = styled.div`
 
   @media (min-width: 576px) {
   
-
     .image {
       width: 40%;
     }
@@ -32,13 +31,13 @@ export const StyledProduct = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     .image {
       width: 200px;
-    }
-  }
+    } */
+  /* } */
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     width: 90%;
     display: block;
     margin: 0;
@@ -47,6 +46,12 @@ export const StyledProduct = styled.div`
       width: 20%;
       float: left;
       margin-right: 8px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .image {
+      width: 130px;
     }
   }
 `;

@@ -11,7 +11,7 @@ export const StyledProductSection = styled.div`
   background: linear-gradient(45deg, #3f5573, #7395d9);
 
   h2 {
-    margin-top: 60px;
+    margin-top: 70px;
     font-size: 1.5em;
   }
 

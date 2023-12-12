@@ -25,7 +25,7 @@ const ModalContainerStyled = styled.div`
   align-items: center;
   z-index: 10;
   background-color: #fafafa80;
-  filter: blur(4px);
+  /* filter: blur(4px); */
   
   
   .modal {

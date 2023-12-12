@@ -7,6 +7,7 @@ export const StyledServiceCards = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 18px;
+  margin-bottom: 8px;
   /* flex-wrap: wrap; */
 
   i {

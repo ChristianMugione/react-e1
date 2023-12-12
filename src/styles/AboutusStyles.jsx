@@ -19,14 +19,15 @@ export const StyledAboutUs = styled.section`
     width: 100%;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     padding: 80px 0;
     gap: 10px;
     min-height: calc(100vh - 250px);
+    align-items: flex-end;
 
     img {
-      width: 40%;
+      width: 50%;
     }
   }
 `;
@@ -38,10 +39,18 @@ export const AboutUsText = styled.div`
   & h3 {
     font-size: 32px;
     text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: left;
+    }
   }
 
   & p {
     margin: 8px;
     font-size: 18px;
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 `;

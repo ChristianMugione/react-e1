@@ -12,7 +12,7 @@ export const ServicesStyled = styled.section`
 
   & h2 {
     
-    margin-top: 60px;
+    margin-top: 70px;
     font-size: 36px;
     color: #000513;
     text-shadow: 0 0 15px white;

@@ -12,22 +12,36 @@ export const HeroStyles = styled.div`
   background-size: cover;  
   font-family: 'Ubuntu', sans-serif;
   font-size: 1em;
+  gap: 8px;
+
+  @media (min-width:576px) {
+    font-size: 1.2em;
+  }
 `;
 
 export const StyledH2 = styled.h2`
-  font-size: 2em;
+  font-size: 1.4em;
   text-shadow: 1px 2px 6px black;
   color: white;
-  max-width: 600px;
+  max-width: 300px;
   margin: 0 auto;
+
+  @media (min-width:576px) {
+    max-width: 450px;
+  }
   
 `;
 
 export const StyledP = styled.p`
-  font-size: 1em;
+  font-size: 1.1em;
   color: white;
-  text-shadow: 1px 2px 2px black, -1px -2px 2px lightgray;
-  max-width: 600px;
+  text-shadow: 1px 2px 2px black;
+  max-width: 300px;
   margin: 0 auto;
+
+  @media (min-width:576px) {
+    max-width: 450px;
+  }
+
 `;
 
