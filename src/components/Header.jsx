@@ -33,7 +33,6 @@ const StyledHeader = styled.header`
     position: relative;
     width: 30px;
     height: 30px;
-    border: 1px solid gray;
   }
 
   .cart-icon {
