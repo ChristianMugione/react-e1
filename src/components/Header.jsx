@@ -127,8 +127,8 @@ export const Header = () => {
             )}
           </div>
         </div>
-      </StyledHeader>
       {isCartOpened && <Cart />}
+      </StyledHeader>
     </>
   );
 };

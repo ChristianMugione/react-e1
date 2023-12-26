@@ -1,6 +1,8 @@
 .footer {
   width: 100%;
   background-color: lightgray;
+  background: linear-gradient(90deg, steelblue, lightgray, steelblue);
+  color: #222;
 
   display: flex;
   flex-direction: column;
@@ -9,12 +11,6 @@
   gap: 8px;
 
   overflow-x: hidden;
-}
-
-@media (min-width: 350px) {
-  .footer {
-    flex-direction: row;
-  }
 }
 
 .footer img {
@@ -43,4 +39,5 @@
   gap: 4px;
   margin-block-start: 0;
   margin-block-end: 0;
+  text-shadow: 0 0 5px white;
 }

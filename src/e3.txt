@@ -1,19 +1,60 @@
-E3: Lógica de productos y carrito - Redux Toolkit
-
-👉 agregar mas productos (hardcodeados)
-👉 detalles estéticos
-
-Finalizadas:
-
-👉 abrir menu cierra carrito y viceversa
-👉 revisar scroll horizontal
-👉 Renderizar los productos de manera dinámica en la sección de productos que ya tenían lista de la entrega anterior.
-👉 Realizar la lógica de filtros.
-👉 Agregar productos al carrito de manera dinámica.
-👉 Manejar las cantidades del producto elegido en el carrito de manera dinámica.
-👉 Agregar una funcionalidad para borrar productos del carrito de manera individual o todos juntos de manera grupal.
-👉 Agregar funcionalidad de finalizar compra (Se debe vaciar el carrito)
-👉 agregar productos, borrar prods y finalizar compra, deberán confirmarse con un modal (No "alerts" ni "confirms").
-👉 modal confirmacion agregar productos
 
 //
+
+E1: Landing Page
+Para esta entrega, la primera del módulo de React, deberán realizar una Landing Page que cumpla con los siguiente requisitos:
+
+✅ Deberá tener un Header con su navbar.
+👉 Deberá tener un Hero representativo de su página.
+👉 Deberá tener una sección de productos destacados(Iteraremos esta sección en próximas entregas para que desde aquí se pueda navegar a una página de productos dentro de nuestra web).
+✅ Deberá tener un Footer
+👉 100% responsiva.
+✅ Deberá estar Deployada en Vercel
+----------------------------------------------------------------------------
+E2: Context y React Router
+En esta entrega iteraremos sobre la realizado en la entrega Nº1:
+
+✅ Ahora sí, utilizando context, haremos funcional el menú desplegable del header en responsive.
+✅ Deberán crear una página de "About" , "Sobre nosotros" o de caracter similar a estas.
+✅ Página de "productos"
+✅ Página de contacto campos "nombre", "apellido" , "email" y "asunto" (por ahora, sin validaciones).
+✅ Todas las páginas (landing de la E1 incluida) deben estar vinculadas entre sí mediante el uso de React Router.
+
+----------------------------------------------------------------------------
+E3: Lógica de productos y carrito - Redux Toolkit
+
+✅ abrir menu cierra carrito y viceversa
+✅ Renderizar los productos de manera dinámica en la sección de productos que ya tenían lista de la entrega anterior.
+✅ Realizar la lógica de filtros.
+✅ Agregar productos al carrito de manera dinámica.
+✅ Manejar las cantidades del producto elegido en el carrito de manera dinámica.
+✅ Agregar una funcionalidad para borrar productos del carrito de manera individual o todos juntos de manera grupal.
+✅ Agregar funcionalidad de finalizar compra (Se debe vaciar el carrito)
+✅ agregar productos, borrar prods y finalizar compra, deberán confirmarse con un modal (No "alerts" ni "confirms").
+
+----------------------------------------------------------------------------
+Proyecto Integrador | React JS
+
+La web que entreguen deberá contar con la funcionalidades pedidas en las entregas 1, 2 y 3 , estas eran:
+👉 Sección de productos destacados que lleve a la página de productos de alguna manera (por ejemplo, un botón).
+👉 Utilizando Formik, deberán realizar la validación del formulario de contacto. El mismo no debe enviar nada, pero si cumplir con la validación de manera correcta de cada uno de los campos y renderizar un mensaje de envio correcto en caso de que todos los campos pasen dicha validación.
+👉 Agregar la funcionalidad de persistencia de datos (productos del carrito) a nuestra app web.
+👉 Diseño responsive de todas las páginas.
+
+
+✅ Header con su navbar funcional en responsive con API Context.
+✅ Hero representativo de su página.
+✅ Footer.
+✅ Una página de "Sobre nosotros".
+✅ Una página de "Productos" , con los productos renderizados dinámicamente, lógica de filtros, agregado de productos al carrito, manejo de cantidades en carrito y la posibilidad de vaciar el carrito, borrar individualmente cada producto y realizar compra(Todas estas acciones deben tener un modal de confirmación).
+✅ Una sección de contacto en la cual tienen que tener al menos un formulario de contacto con los campos "nombre", "apellido" , "email" y "asunto".
+✅ Todas las páginas vinculadas entre si mediante React Router.
+ 
+EXTRA:
+👉 Migrar el context del menú a Redux Toolkit.
+👉 Agregar un sistema de login y registro.
+👉 Agregar una página de checkout al realizar la compra.
+👉 Agregar una página de producto para cada producto individual
+👉 Agregar envio de mail desde el formulario de contacto, usando API's como emailJS.
+
+Mensaje de entrega:
