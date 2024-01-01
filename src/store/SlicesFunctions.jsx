@@ -15,3 +15,7 @@ export const cartQuantity = (productArray) => {
 
   return response;
 };
+
+export const addToLS = (cartItems) => {
+  localStorage.setItem("cart-items", JSON.stringify(cartItems));
+};

@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const ModalConfirm = ({msg, onConfirm, onCancel}) => {
+export const ModalConfirm = ({ msg, onConfirm, onCancel }) => {
   return (
     <ModalContainerStyled>
       <div className="modal">
@@ -12,7 +12,7 @@ export const ModalConfirm = ({msg, onConfirm, onCancel}) => {
       </div>
     </ModalContainerStyled>
   );
-}
+};
 
 const ModalContainerStyled = styled.div`
   position: fixed;
@@ -26,8 +26,7 @@ const ModalContainerStyled = styled.div`
   z-index: 10;
   background-color: #fafafa80;
   /* filter: blur(4px); */
-  
-  
+
   .modal {
     width: 100%;
     height: 50vh;
@@ -41,6 +40,7 @@ const ModalContainerStyled = styled.div`
 
     & p {
       font-size: 20px;
+      color: steelblue;
     }
 
     @media (min-width: 375px) {
@@ -60,6 +60,5 @@ const ModalContainerStyled = styled.div`
     display: flex;
     justify-content: center;
     gap: 8px;
-
   }
 `;

@@ -8,6 +8,8 @@ import { BsCart } from "react-icons/bs";
 import { Cart } from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../store/storeSlices";
+import { initCart } from "../store/storeSlices";
+import { ModalInfo } from "./ModalInfo";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -46,9 +48,13 @@ const StyledHeader = styled.header`
 
   .item-quantity {
     background-color: red;
-    padding: 2px 6px;
+    color: white;
+    width: 20px;
+    height: 20px;
+    /* padding: 2px 6px; */
     border-radius: 50%;
     font-size: 12px;
+    font-weight: 800;
     position: absolute;
     top: -4px;
     right: -4px;
@@ -94,6 +100,13 @@ export const Header = () => {
   const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
   const cartItemQuantity = useSelector((state) => state.cartList.quantityCart);
 
+  useEffect(() => {
+    const cartItemsFromLS = JSON.parse(localStorage.getItem("cart-items"));
+    if (cartItemsFromLS) {
+      dispatch(initCart(cartItemsFromLS));
+    }
+  }, []);
+
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 768) {
       openMenu();
@@ -127,7 +140,8 @@ export const Header = () => {
             )}
           </div>
         </div>
-      {isCartOpened && <Cart />}
+        {isCartOpened && <Cart />}
+        <ModalInfo />
       </StyledHeader>
     </>
   );

@@ -1,62 +1,72 @@
 import { BsXCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { toggleCart, emptyCart, processTheCart } from "../store/storeSlices";
+import {
+  initCart,
+  toggleCart,
+  emptyCart,
+  processTheCart,
+} from "../store/storeSlices";
 import { CartItem } from "./CartItem";
 import { ModalConfirm } from "./ModalConfirm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.cartList.products);
   const total = useSelector((state) => state.cartList.totalCart);
   const dispatch = useDispatch();
-  const [modalMsg, setModalMsg] = useState("")
-  const [showModal, setShowModal] = useState(false)
-  const [action, setAction] = useState("")
+  const [modalMsg, setModalMsg] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [action, setAction] = useState("");
+
+  // useEffect(() => {
+  //   const cartItemsFromLS = JSON.parse(localStorage.getItem("cart-items"));
+  //   dispatch(initCart(cartItemsFromLS));
+  // }, []);
 
   const doToggleCart = () => {
     dispatch(toggleCart());
   };
 
   const closeModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   const confirmDeleteAll = () => {
-    setModalMsg("¿Desea borrar todos los artículos?")
-    setAction("del")
-    setShowModal(true)
-  }
+    setModalMsg("¿Desea borrar todos los artículos?");
+    setAction("del");
+    setShowModal(true);
+  };
 
   const deleteAllItemsFromCart = () => {
     dispatch(emptyCart());
-    setShowModal(false)
+    setShowModal(false);
   };
-  
+
   const confirmProcessCart = () => {
-    setModalMsg("¿Desea finalizar la compra?")
-    setAction("process")
-    setShowModal(true)
-  }
-  
+    setModalMsg("¿Desea finalizar la compra?");
+    setAction("process");
+    setShowModal(true);
+  };
+
   const processCart = () => {
     dispatch(processTheCart());
-    setShowModal(false)
+    setShowModal(false);
   };
 
   const confirmedAction = () => {
     switch (action) {
       case "del":
-        deleteAllItemsFromCart()
+        deleteAllItemsFromCart();
         break;
       case "process":
-        processCart()
+        processCart();
         break;
-    
+
       default:
         break;
     }
-  }
+  };
 
   return (
     <StyledCart>
@@ -77,17 +87,25 @@ export const Cart = () => {
           );
         })}
 
-        {(cartItems.length) && (<>
-        <div>Total: {total}</div>
-        <div className="bottom-buttons">
-          <button onClick={confirmDeleteAll}>VACIAR CARRITO</button>
-          <button onClick={confirmProcessCart}>FINALIZAR COMPRA</button>
-        </div>
-        </>
+        {cartItems.length ? (
+          <>
+            <div>Total: {total}</div>
+            <div className="bottom-buttons">
+              <button onClick={confirmDeleteAll}>VACIAR CARRITO</button>
+              <button onClick={confirmProcessCart}>FINALIZAR COMPRA</button>
+            </div>
+          </>
+        ) : (
+          <h2>está vacío</h2>
         )}
-
       </div>
-      {showModal && (<ModalConfirm msg={modalMsg} onConfirm={confirmedAction} onCancel={closeModal} />)}
+      {showModal && (
+        <ModalConfirm
+          msg={modalMsg}
+          onConfirm={confirmedAction}
+          onCancel={closeModal}
+        />
+      )}
     </StyledCart>
   );
 };
@@ -125,7 +143,7 @@ const StyledCart = styled.div`
     width: 90%;
   }
 
-  .bottom-buttons{
+  .bottom-buttons {
     display: flex;
     justify-content: center;
     width: 100%;

@@ -1,12 +1,40 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { ModalConfirm } from "./ModalConfirm";
+import { addItem } from "../store/storeSlices";
+import { useDispatch } from "react-redux";
 
-export const FeaturedProductCard = ({ imageUrl, title, price }) => {
+export const FeaturedProductCard = ({ index, image, title, price }) => {
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmAdd = () => {
+    setShowModal(true);
+  };
+
+  const addToCart = () => {
+    const newItem = { index, image, title, price };
+    dispatch(addItem(newItem));
+    setShowModal(false);
+  };
+
+  const cancelAdd = () => {
+    setShowModal(false);
+  };
+
   return (
     <StyledFeaturedProductCard>
-      <img src={imageUrl} alt="" />
+      <img src={image} alt="" />
       <h3>{title}</h3>
       <p>{price}</p>
-      <button>Agregar</button>
+      <button onClick={confirmAdd}>Agregar</button>
+      {showModal && (
+        <ModalConfirm
+          msg="¿Está seguro de agregar el producto?"
+          onConfirm={addToCart}
+          onCancel={cancelAdd}
+        />
+      )}
     </StyledFeaturedProductCard>
   );
 };
