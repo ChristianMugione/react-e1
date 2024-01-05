@@ -9,7 +9,7 @@ export const StyledUl = styled.ul`
   top: 48px;
   left: 0;
   width: 100%;
-  /* background-color: rgba(255, 255, 255, 70%); */
+  background-color: rgba(255, 255, 255, 70%);
 
   padding-inline-start: 0;
 
@@ -21,7 +21,6 @@ export const StyledUl = styled.ul`
     flex-direction: column;
     align-items: center;
     gap: 8px;
-
   }
 
   li::after {
@@ -49,17 +48,18 @@ export const StyledUl = styled.ul`
     right: unset;
     position: relative;
     gap: 18px;
-    
+    background-color: unset;
+
     li {
       padding: 0;
       padding: 0 6px;
       border-radius: 8px;
-      transition: all .5s;
+      transition: all 0.5s;
     }
-    
+
     li:hover {
       background-color: white;
-      transition: all .5s;
+      transition: all 0.5s;
     }
 
     li::after {

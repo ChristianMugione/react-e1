@@ -38,11 +38,11 @@ const StyledSection = styled.section`
   width: 100%;
   display: flex;
   gap: 4px;
-  margin-top: 10vh;
+  margin-top: 20px;
   overflow-x: auto;
   white-space: nowrap;
 
-  @media (min-width: 600px) {
+  @media (min-width: 576px) {
     justify-content: center;
   }
 `;

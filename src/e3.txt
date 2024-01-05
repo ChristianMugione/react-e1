@@ -36,12 +36,12 @@ E3: Lógica de productos y carrito - Redux Toolkit
 Proyecto Integrador | React JS
 
 La web que entreguen deberá contar con la funcionalidades pedidas en las entregas 1, 2 y 3 , estas eran:
-👉 Utilizando Formik realizar validación del formulario de contacto. 
-      Debe cumplir con la validación de manera correcta de cada uno de los campos 
-      renderizar un mensaje de envio correcto en caso de que todos los campos pasen dicha validación.
 👉 Diseño responsive de todas las páginas.
 
 
+✅ Utilizando Formik realizar validación del formulario de contacto. 
+      Debe cumplir con la validación de manera correcta de cada uno de los campos 
+      renderizar un mensaje de envio correcto en caso de que todos los campos pasen dicha validación.
 ✅ Agregar la funcionalidad de persistencia de datos (productos del carrito) a nuestra app web.
 ✅ Header con su navbar funcional en responsive con API Context.
 ✅ Hero representativo de su página.

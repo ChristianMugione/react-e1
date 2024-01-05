@@ -13,6 +13,7 @@ export const HeroStyles = styled.section`
   font-family: "Ubuntu", sans-serif;
   font-size: 0.8em;
   gap: 8px;
+  padding-top: 20px;
 
   @media (min-width: 576px) {
     font-size: 1.2em;
