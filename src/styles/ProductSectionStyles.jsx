@@ -9,10 +9,13 @@ export const StyledProductSection = styled.div`
   align-items: center;
   width: 100%;
   background: linear-gradient(45deg, #3f5573, #7395d9);
+  color: #000060;
 
   h2 {
     margin-top: 70px;
     font-size: 1.5em;
+    color: white;
+    text-shadow: 1px 1px 1px black;
   }
 
   button {

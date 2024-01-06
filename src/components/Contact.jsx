@@ -96,8 +96,8 @@ const StyledContact = styled.section`
 
   & h2 {
     font-size: 36px;
-    color: #000513;
-    text-shadow: 0 0 5px white;
+    color: white;
+    text-shadow: 1px 1px 1px black;
   }
 
   form {

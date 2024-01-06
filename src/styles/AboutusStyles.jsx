@@ -49,8 +49,9 @@ export const StyledAboutUs = styled.section`
 
 export const AboutUsText = styled.div`
   text-align: left;
-  color: black;
+  color: white;
   width: 90%;
+  text-shadow: 1px 1px 1px black;
 
   & h3 {
     font-size: 32px;

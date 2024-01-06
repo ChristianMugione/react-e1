@@ -1,12 +1,7 @@
 import React from "react";
 import logo from "../assets/img/ruta-camper-logo.png";
 import "../styles/Footer.css";
-import {
-  BsTwitter,
-  BsInstagram,
-  BsYoutube,
-  BsFacebook,
-} from "react-icons/bs";
+import { BsTwitter, BsInstagram, BsYoutube, BsFacebook } from "react-icons/bs";
 
 export const Footer = () => (
   <div className="footer">

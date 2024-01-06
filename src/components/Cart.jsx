@@ -19,11 +19,6 @@ export const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState("");
 
-  // useEffect(() => {
-  //   const cartItemsFromLS = JSON.parse(localStorage.getItem("cart-items"));
-  //   dispatch(initCart(cartItemsFromLS));
-  // }, []);
-
   const doToggleCart = () => {
     dispatch(toggleCart());
   };

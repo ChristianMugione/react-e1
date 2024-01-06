@@ -24,7 +24,7 @@ export const ProductCard = ({ index, image, title, price }) => {
 
   return (
     <StyledProduct>
-      <div>
+      <div className="product-info">
         <img
           className="image"
           src={image ? image : "/imagen-no-disponible.png"}
