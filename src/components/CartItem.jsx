@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { addOneMoreItem, subsItem, removeOneItem } from "../store/storeSlices";
 import { useDispatch } from "react-redux";
 import { BsTrash } from "react-icons/bs";
+import { toCurrency } from "../assets/functions/auxiliar";
 
 export const CartItem = (props) => {
   const dispatch = useDispatch();
@@ -29,7 +30,15 @@ export const CartItem = (props) => {
         {props.quantity}
         <button onClick={addOneItem}>+</button>
       </p>
-      <p>{props.price}</p>
+      {/* <p>
+        <NumericFormat
+          value={props.price}
+          thousandSeparator="."
+          decimalSeparator=","
+          decimalScale={2}
+        />
+      </p> */}
+      <p>{toCurrency(props.price)}</p>
       <BsTrash onClick={removeItem} className="trash" />
     </CartItemStyled>
   );

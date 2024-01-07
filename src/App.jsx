@@ -12,7 +12,7 @@ import { NavBarProvider } from "./components/NavBarContext";
 import store from "./store/store";
 import { Provider } from "react-redux";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { ModalInfo } from "./components/ModalInfo";
+import { Product } from "./components/Product";
 
 function App() {
   return (
@@ -24,12 +24,12 @@ function App() {
             <Routes>
               <Route path="/" exact element={<HeroSection />} />
               <Route path="/products" element={<ProductSection />} />
+              <Route path="/product/:idProd" element={<Product />} />
               <Route path="/aboutus" element={<AboutUsSection />} />
               <Route path="/services" element={<ServicesSection />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/*" element={<HeroSection />} />
             </Routes>
-
             <Footer />
           </NavBarProvider>
         </AppWrapper>

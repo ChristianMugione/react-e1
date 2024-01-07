@@ -3,10 +3,13 @@ import styled from "styled-components";
 import { ModalConfirm } from "./ModalConfirm";
 import { addItem } from "../store/storeSlices";
 import { useDispatch } from "react-redux";
+import { toCurrency } from "../assets/functions/auxiliar";
+import { useNavigate } from "react-router-dom";
 
 export const FeaturedProductCard = ({ index, image, title, price }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const confirmAdd = () => {
     setShowModal(true);
@@ -26,8 +29,18 @@ export const FeaturedProductCard = ({ index, image, title, price }) => {
     <StyledFeaturedProductCard>
       <img src={image} alt="" />
       <h3>{title}</h3>
-      <p>{price}</p>
-      <button onClick={confirmAdd}>Agregar</button>
+      <p>{toCurrency(price)}</p>
+      <div className="btns">
+        <button onClick={confirmAdd}>Agregar</button>
+        <button
+          onClick={() => {
+            navigate(`/product/${index}`);
+          }}
+        >
+          Ver
+        </button>
+      </div>
+
       {showModal && (
         <ModalConfirm
           msg="¿Está seguro de agregar el producto?"
@@ -52,7 +65,7 @@ const StyledFeaturedProductCard = styled.div`
 
   img {
     width: 100%;
-    height: 100px;
+    height: 80px;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
@@ -60,6 +73,12 @@ const StyledFeaturedProductCard = styled.div`
 
   h3 {
     margin: 0;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
   }
 
   button {
