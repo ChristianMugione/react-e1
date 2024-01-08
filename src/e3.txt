@@ -56,7 +56,7 @@ EXTRA:
 👉 Migrar el context del menú a Redux Toolkit.
 👉 Agregar un sistema de login y registro.
 👉 Agregar una página de checkout al realizar la compra.
-👉 Agregar una página de producto para cada producto individual
+✅ Agregar una página de producto para cada producto individual
 👉 Agregar envio de mail desde el formulario de contacto, usando API's como emailJS.
 
 Mensaje de entrega:

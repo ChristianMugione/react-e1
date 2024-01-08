@@ -1,14 +1,30 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { toCurrency } from "../assets/functions/auxiliar";
+import { addItem } from "../store/storeSlices";
+import { useState } from "react";
+import { ModalConfirm } from "./ModalConfirm";
 
 export const Product = () => {
   const { idProd } = useParams();
   const products = useSelector((state) => state.productList.products);
   const product = products.find((prod) => prod.key == idProd);
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
-  console.log(product);
+  const confirmAdd = () => {
+    setShowModal(true);
+  };
+
+  const cancelAdd = () => {
+    setShowModal(false);
+  };
+
+  const addToCart = () => {
+    dispatch(addItem(product));
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -17,8 +33,15 @@ export const Product = () => {
         <div className="product-info-txt">
           <h1>{product.title}</h1>
           <p>{toCurrency(product.price)}</p>
-          <button>Agregar al Carrito</button>
+          <button onClick={confirmAdd}>Agregar al Carrito</button>
         </div>
+        {showModal && (
+          <ModalConfirm
+            msg="¿Está seguro de agregar el producto?"
+            onConfirm={addToCart}
+            onCancel={cancelAdd}
+          />
+        )}
       </StyledProductInfo>
     </>
   );
@@ -68,6 +91,8 @@ const StyledProductInfo = styled.main`
   }
 
   @media (min-width: 768px) {
+    max-width: 720px;
+
     h1 {
       font-size: 1.4em;
     }
@@ -75,29 +100,5 @@ const StyledProductInfo = styled.main`
     p {
       font-size: 1.2em;
     }
-  }
-
-  @media (min-width: 992px) {
-    max-width: 960px;
-
-    .product-info-txt {
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 1.6em;
-    }
-
-    p {
-      font-size: 1.4em;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    max-width: 1140px;
-  }
-
-  @media (min-width: 1400px) {
-    max-width: 1280px;
   }
 `;
