@@ -53,7 +53,7 @@ La web que entreguen deberá contar con la funcionalidades pedidas en las entreg
 ✅ Sección de productos destacados que lleve a la página de productos de alguna manera (por ejemplo, un botón).
  
 EXTRA:
-👉 Migrar el context del menú a Redux Toolkit.
+✅ Migrar el context del menú a Redux Toolkit.
 👉 Agregar un sistema de login y registro.
 👉 Agregar una página de checkout al realizar la compra.
 ✅ Agregar una página de producto para cada producto individual

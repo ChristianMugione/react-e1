@@ -111,6 +111,22 @@ export const modalInfoSlice = createSlice({
   },
 });
 
+export const menuOpen = createSlice({
+  name: "menuOpened",
+  initialState: { menuIsOpened: true },
+  reducers: {
+    menuToggle: (state) => {
+      state.menuIsOpened = !state.menuIsOpened;
+    },
+    openMenu: (state) => {
+      state.menuIsOpened = true;
+    },
+    closeMenu: (state) => {
+      state.menuIsOpened = false;
+    },
+  },
+});
+
 export const {
   initCart,
   addItem,
@@ -121,4 +137,5 @@ export const {
   processTheCart,
 } = cartSlice.actions;
 export const { toggleCart } = cartOpen.actions;
+export const { menuToggle, openMenu, closeMenu } = menuOpen.actions;
 export const { openModalInfo, closeModalInfo } = modalInfoSlice.actions;

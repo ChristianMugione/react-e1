@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   cartOpen,
+  menuOpen,
   cartSlice,
   modalInfoSlice,
   productSlice,
@@ -11,6 +12,7 @@ export default configureStore({
     productList: productSlice.reducer,
     cartList: cartSlice.reducer,
     cartOpened: cartOpen.reducer,
+    menuOpened: menuOpen.reducer,
     modalInfo: modalInfoSlice.reducer,
   },
 });

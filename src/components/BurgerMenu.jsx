@@ -1,7 +1,22 @@
 import React from "react";
-import { useNavBar } from "./NavBarContext";
 import styled from "styled-components";
 import { BsList } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { menuToggle } from "../store/storeSlices";
+
+export const BurgerMenu = () => {
+  const dispatch = useDispatch();
+
+  const toggleMenu = () => {
+    dispatch(menuToggle());
+  };
+
+  return (
+    <BurgerIcon onClick={toggleMenu}>
+      <BsList />
+    </BurgerIcon>
+  );
+};
 
 const BurgerIcon = styled.div`
   cursor: pointer;
@@ -18,13 +33,3 @@ const BurgerIcon = styled.div`
     display: none;
   }
 `;
-
-export const BurgerMenu = () => {
-  const { toggleMenu } = useNavBar();
-
-  return (
-    <BurgerIcon onClick={toggleMenu}>
-      <BsList />
-    </BurgerIcon>
-  );
-};
