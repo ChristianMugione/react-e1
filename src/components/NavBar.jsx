@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { StyledUl } from "../styles/NavBarStyles";
 import { Link } from "react-router-dom";
-import { closeMenu } from "../store/storeSlices";
 
 const NavBar = () => {
   const dispatch = useDispatch();

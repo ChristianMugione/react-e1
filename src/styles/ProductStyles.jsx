@@ -96,3 +96,59 @@ export const StyledFeaturedProductCard = styled.div`
     }
   }
 `;
+
+export const StyledProductInfo = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+  width: 90%;
+  height: 100%;
+
+  img {
+    width: 90%;
+    border-radius: 8px;
+  }
+
+  .product-info-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+
+    img {
+      width: 50%;
+    }
+
+    .product-info-txt {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+
+    h1 {
+      font-size: 1.4em;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+  }
+`;
