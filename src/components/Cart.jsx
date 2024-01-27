@@ -1,6 +1,5 @@
 import { BsXCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import {
   initCart,
   toggleCart,
@@ -10,6 +9,7 @@ import {
 import { CartItem } from "./CartItem";
 import { ModalConfirm } from "./ModalConfirm";
 import { useEffect, useState } from "react";
+import { StyledCart } from "../styles/CartStyles";
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.cartList.products);
@@ -104,44 +104,3 @@ export const Cart = () => {
     </StyledCart>
   );
 };
-
-const StyledCart = styled.div`
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 100%;
-  height: 80dvh;
-  background-color: azure;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-
-  .close-btn {
-    font-size: 22px;
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    cursor: pointer;
-  }
-
-  h2 {
-    margin-top: 80px;
-  }
-
-  .cart-items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 90%;
-  }
-
-  .bottom-buttons {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 5px;
-  }
-`;

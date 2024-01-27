@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { FeaturedProductCard } from "./FeaturedProductCard";
 import { useSelector } from "react-redux";
+import { StyledFeaturedProducts } from "../styles/ProductStyles";
 
 export const FeaturedProducts = () => {
   //generar array con 3 destacados (random)
@@ -20,7 +20,7 @@ export const FeaturedProducts = () => {
   }
 
   return (
-    <StyledSection>
+    <StyledFeaturedProducts>
       {FeaturedProducts.map((prod) => (
         <FeaturedProductCard
           key={prod.key}
@@ -30,19 +30,6 @@ export const FeaturedProducts = () => {
           price={prod.price}
         />
       ))}
-    </StyledSection>
+    </StyledFeaturedProducts>
   );
 };
-
-const StyledSection = styled.section`
-  width: 100%;
-  display: flex;
-  gap: 4px;
-  margin-top: 20px;
-  overflow-x: auto;
-  white-space: nowrap;
-
-  @media (min-width: 576px) {
-    justify-content: center;
-  }
-`;
