@@ -37,6 +37,10 @@ export const StyledContact = styled.section`
     border-radius: 8px;
   }
 
+  textarea {
+    height: 90px;
+  }
+
   .row {
     display: flex;
     /* flex-direction: column; */
