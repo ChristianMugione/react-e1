@@ -51,6 +51,17 @@ export const StyledFeaturedProducts = styled.section`
   overflow-x: auto;
   white-space: nowrap;
 
+  .loading {
+    background: linear-gradient(45deg, #3f5573, #7395d9);
+    color: white;
+    padding: 0.5em 1.2em;
+    border-radius: 1em;
+    margin: 0;
+    font-size: 0.8em;
+
+    box-shadow: 0 0 5px 0 black;
+  }
+
   @media (min-width: 576px) {
     justify-content: center;
   }

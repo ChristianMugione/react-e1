@@ -3,7 +3,7 @@ export const INITIAL_STATE = {
     {
       key: "1",
       image: "/linterna-led.jpg",
-      title: "Linternaaa LED portátil de emergencia para exteriores",
+      title: "Linternita LED portátil de emergencia para exteriores",
       category: "iluminacion",
       price: 56628.63,
     },

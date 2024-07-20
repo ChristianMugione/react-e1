@@ -3,6 +3,7 @@ import validationSchema from "../formik/validationSchema";
 import { useDispatch } from "react-redux";
 import { openModalInfo, closeModalInfo } from "../store/storeSlices";
 import { StyledContact } from "../styles/ContactStyles";
+import { openModalInfoAndClose } from "../assets/functions/auxiliar";
 
 export const Contact = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,14 @@ export const Contact = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      console.log(values);
-      dispatch(openModalInfo({ msg: "Mensaje enviado" }));
-      setTimeout(() => {
-        dispatch(closeModalInfo());
-      }, 5000);
+      console.log("Values: ", values);
+      // dispatch(openModalInfo({ msg: "Mensaje enviado" }));
+      // setTimeout(() => {
+      //   dispatch(closeModalInfo());
+      // }, 5000);
+
+      openModalInfoAndClose("Contacto enviado", 3);
+
       formik.resetForm();
     },
   });

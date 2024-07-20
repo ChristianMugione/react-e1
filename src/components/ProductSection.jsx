@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { StyledProductSection } from "../styles/ProductSectionStyles";
 import { useSelector } from "react-redux";
+import { getProducts } from "../assets/functions/dbFncs";
+import { useDispatch } from "react-redux";
+import { initializeProductList } from "../store/storeSlices";
 
 export const ProductSection = () => {
   const productList = useSelector((state) => state.productList.products);
   const [cat, setCat] = useState("todas");
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const getProductsFnc = async () => {
+  //     const products = await getProducts();
+  //     dispatch(initializeProductList(products));
+  //     console.log(products);
+  //   };
+
+  //   getProductsFnc();
+  // }, []);
 
   return (
     <StyledProductSection>
@@ -53,9 +67,9 @@ export const ProductSection = () => {
         {productList.map((prod) => {
           return prod.category == cat || cat == "todas" ? (
             <ProductCard
-              key={prod.key}
-              index={prod.key}
-              image={prod.image}
+              key={prod._id}
+              index={prod._id}
+              image={prod.thumbnail}
               title={prod.title}
               price={prod.price}
             />

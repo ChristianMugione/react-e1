@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { totalCalc, cartQuantity, addToLS } from "./SlicesFunctions";
-import { INITIAL_STATE } from "./data";
 
-const initialState = INITIAL_STATE;
+const initialState = {
+  products: [],
+};
 
 export const productSlice = createSlice({
   name: "productList",
   initialState,
   reducers: {
-    //
+    initializeProductList: (state, action) => {
+      state.products = action.payload;
+    },
   },
 });
 
@@ -43,6 +46,7 @@ export const cartSlice = createSlice({
       const itemModified = state.products.find(
         (item) => item.index === action.payload
       );
+      console.log("itemModified: ", itemModified);
       if (itemModified.quantity > 1) {
         itemModified.quantity -= 1;
         // state.totalCart -= itemModified.price;
@@ -93,6 +97,22 @@ export const cartOpen = createSlice({
     toggleCart: (state) => {
       state.cartIsOpened = !state.cartIsOpened;
     },
+    closeCart: (state) => {
+      state.cartIsOpened = false;
+    },
+  },
+});
+
+export const userMenuOpen = createSlice({
+  name: "userMenuOpened",
+  initialState: { userMenuIsOpened: false },
+  reducers: {
+    toggleUserMenu: (state) => {
+      state.userMenuIsOpened = !state.userMenuIsOpened;
+    },
+    closeUserMenu: (state) => {
+      state.userMenuIsOpened = false;
+    },
   },
 });
 
@@ -122,7 +142,29 @@ export const menuOpen = createSlice({
       state.menuIsOpened = true;
     },
     closeMenu: (state) => {
-      state.menuIsOpened = false;
+      if (window.innerWidth < 768) {
+        state.menuIsOpened = false;
+      }
+    },
+  },
+});
+
+export const modalSignupSlice = createSlice({
+  name: "modalSignup",
+  initialState: {
+    modalIsOpened: false,
+    modalIsRegister: true,
+  },
+  reducers: {
+    openModalSignup: (state, action) => {
+      state.modalIsOpened = true;
+      state.modalIsRegister = action.payload.modalIsRegister;
+    },
+    closeModalSignup: (state) => {
+      state.modalIsOpened = false;
+    },
+    toggleModalIsRegister: (state) => {
+      state.modalIsRegister = !state.modalIsRegister;
     },
   },
 });
@@ -136,6 +178,10 @@ export const {
   emptyCart,
   processTheCart,
 } = cartSlice.actions;
-export const { toggleCart } = cartOpen.actions;
+export const { toggleCart, closeCart } = cartOpen.actions;
+export const { toggleUserMenu, closeUserMenu } = userMenuOpen.actions;
 export const { menuToggle, openMenu, closeMenu } = menuOpen.actions;
 export const { openModalInfo, closeModalInfo } = modalInfoSlice.actions;
+export const { initializeProductList } = productSlice.actions;
+export const { openModalSignup, closeModalSignup, toggleModalIsRegister } =
+  modalSignupSlice.actions;

@@ -2,22 +2,43 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/img/ruta-camper-logo.png";
 import { BurgerMenu } from "./BurgerMenu";
 import NavBar from "./NavBar";
-import styled from "styled-components";
-import { BsCart } from "react-icons/bs";
+import { UserMenu } from "./UserMenu";
+import { BsCart, BsPersonFill } from "react-icons/bs";
 import { Cart } from "./Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { closeMenu, openMenu, toggleCart } from "../store/storeSlices";
-import { initCart } from "../store/storeSlices";
+import {
+  closeMenu,
+  openMenu,
+  toggleCart,
+  toggleUserMenu,
+  initCart,
+  closeUserMenu,
+  closeCart,
+} from "../store/storeSlices";
 import { ModalInfo } from "./ModalInfo";
 import { Blurer, StyledHeader } from "../styles/HeaderStyles";
 
 export const Header = () => {
-  // const { isOpen, closeMenu, openMenu } = useNavBar();
-  // const [ cartOpen, setCartOpen ] = useState(false);
   const isOpen = useSelector((state) => state.menuOpened.menuIsOpened);
-  const dispatch = useDispatch();
   const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
+  const userMenuOpened = useSelector(
+    (state) => state.userMenuOpened.userMenuIsOpened
+  );
   const cartItemQuantity = useSelector((state) => state.cartList.quantityCart);
+
+  const dispatch = useDispatch();
+
+  const closeAllMenus = () => {
+    dispatch(closeUserMenu());
+    dispatch(closeCart());
+    dispatch(closeMenu());
+    document.removeEventListener("click", clickOnDocumentListener);
+  };
+  const clickOnDocumentListener = () => {
+    document.addEventListener("click", closeAllMenus);
+  };
+
+  //clickOnDocumentListener(); //se debe activar al abrir un menu
 
   useEffect(() => {
     const cartItemsFromLS = JSON.parse(localStorage.getItem("cart-items"));
@@ -41,6 +62,14 @@ export const Header = () => {
 
   const toggleCartOpened = () => {
     dispatch(toggleCart());
+    dispatch(closeUserMenu());
+    dispatch(closeMenu());
+  };
+
+  const toggleUserMenuFnc = () => {
+    dispatch(toggleUserMenu());
+    dispatch(closeCart());
+    dispatch(closeMenu());
   };
 
   return (
@@ -56,15 +85,21 @@ export const Header = () => {
               className="cart-icon"
               onClick={() => {
                 toggleCartOpened();
-                closeMenu();
               }}
             />
             {cartItemQuantity > 0 && (
               <span className="item-quantity">{cartItemQuantity}</span>
             )}
           </div>
+          <BsPersonFill
+            className="user-icon"
+            onClick={() => {
+              toggleUserMenuFnc();
+            }}
+          />
         </div>
         {isCartOpened && <Cart />}
+        {userMenuOpened && <UserMenu />}
         <ModalInfo />
       </StyledHeader>
     </>

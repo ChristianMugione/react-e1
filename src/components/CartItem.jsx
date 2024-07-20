@@ -11,6 +11,7 @@ export const CartItem = (props) => {
 
   const substractItem = () => {
     dispatch(subsItem(props.index));
+    console.log(props.index);
   };
 
   const addOneItem = () => {
@@ -30,14 +31,6 @@ export const CartItem = (props) => {
         {props.quantity}
         <button onClick={addOneItem}>+</button>
       </p>
-      {/* <p>
-        <NumericFormat
-          value={props.price}
-          thousandSeparator="."
-          decimalSeparator=","
-          decimalScale={2}
-        />
-      </p> */}
       <p>{toCurrency(props.price)}</p>
       <BsTrash onClick={removeItem} className="trash" />
     </CartItemStyled>

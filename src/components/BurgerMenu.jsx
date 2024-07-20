@@ -2,17 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { BsList } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { menuToggle } from "../store/storeSlices";
+import { closeCart, closeUserMenu, menuToggle } from "../store/storeSlices";
 
 export const BurgerMenu = () => {
   const dispatch = useDispatch();
 
+  //Función para cambiar el estado del menú entre abierto y cerrado
   const toggleMenu = () => {
     dispatch(menuToggle());
+    dispatch(closeCart());
+    dispatch(closeUserMenu());
   };
 
   return (
-    <BurgerIcon onClick={toggleMenu}>
+    <BurgerIcon
+      onClick={() => {
+        toggleMenu();
+      }}
+    >
       <BsList />
     </BurgerIcon>
   );

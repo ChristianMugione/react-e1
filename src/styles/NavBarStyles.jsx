@@ -43,11 +43,10 @@ export const StyledUl = styled.ul`
     width: fit-content;
     display: flex;
     flex-direction: row;
-    margin-right: 30px;
     top: unset;
     right: unset;
     position: relative;
-    gap: 18px;
+    gap: 8px;
     background-color: unset;
 
     li {

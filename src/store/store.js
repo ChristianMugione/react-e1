@@ -5,6 +5,8 @@ import {
   cartSlice,
   modalInfoSlice,
   productSlice,
+  userMenuOpen,
+  modalSignupSlice,
 } from "./storeSlices";
 
 export default configureStore({
@@ -14,5 +16,7 @@ export default configureStore({
     cartOpened: cartOpen.reducer,
     menuOpened: menuOpen.reducer,
     modalInfo: modalInfoSlice.reducer,
+    userMenuOpened: userMenuOpen.reducer,
+    modalSignup: modalSignupSlice.reducer,
   },
 });

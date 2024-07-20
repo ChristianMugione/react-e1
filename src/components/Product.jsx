@@ -9,7 +9,8 @@ import { StyledProductInfo } from "../styles/ProductStyles";
 export const Product = () => {
   const { idProd } = useParams();
   const products = useSelector((state) => state.productList.products);
-  const product = products.find((prod) => prod.key == idProd);
+  let product = products.find((prod) => prod._id == idProd);
+  console.log(product);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -22,6 +23,11 @@ export const Product = () => {
   };
 
   const addToCart = () => {
+    product = {
+      ...product,
+      image: product.thumbnail,
+      index: product._id,
+    };
     dispatch(addItem(product));
     setShowModal(false);
   };
@@ -29,7 +35,7 @@ export const Product = () => {
   return (
     <>
       <StyledProductInfo>
-        <img src={product.image} alt="product.title" />
+        <img src={product.thumbnail} alt="product.title" />
         <div className="product-info-txt">
           <h1>{product.title}</h1>
           <p>{toCurrency(product.price)}</p>

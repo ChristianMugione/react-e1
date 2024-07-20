@@ -1,4 +1,4 @@
-import { HeroStyles, StyledH2, StyledP } from "../styles/HeroStyles";
+import { HeroStyles } from "../styles/HeroStyles";
 import { useNavigate } from "react-router-dom";
 import { FeaturedProducts } from "./FeaturedProducts";
 
@@ -15,11 +15,11 @@ export const HeroSection = () => {
 
   return (
     <HeroStyles>
-      <StyledH2>TU VIAJE A LA LIBERTAD EMPIEZA CON NOSOTROS</StyledH2>
-      <StyledP>
+      <h2>TU VIAJE A LA LIBERTAD COMIENZA CON NOSOTROS</h2>
+      <p className="hero-text">
         Brindamos asesoramiento integral para quienes desean una vida de viajes
         y acampadas en vehículos recreativos
-      </StyledP>
+      </p>
       <div className="hero-buttons">
         <button className="btn-tienda" onClick={handleClickTienda}>
           TIENDA

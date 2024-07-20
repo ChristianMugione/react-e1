@@ -4,8 +4,10 @@ import { StyledModalInfo } from "../styles/ModalStyles";
 export const ModalInfo = () => {
   const modalInfoState = useSelector((state) => state.modalInfo);
 
+  const modalIsOpened = modalInfoState.modalIsOpened.toString();
+
   return (
-    <StyledModalInfo isOpen={modalInfoState.modalIsOpened}>
+    <StyledModalInfo isOpen={modalIsOpened}>
       {modalInfoState.modalMsg}
     </StyledModalInfo>
   );

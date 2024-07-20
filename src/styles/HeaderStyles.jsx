@@ -18,6 +18,8 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     margin-right: 20px;
+
+    gap: 8px;
   }
 
   .cart-icon-container {
@@ -49,9 +51,21 @@ export const StyledHeader = styled.header`
     right: -4px;
   }
 
+  .user-icon {
+    font-size: 28px;
+    color: #222;
+    cursor: pointer;
+  }
+
   & img {
     width: 100px;
     margin-left: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .nav-cart {
+      gap: 8px;
+    }
   }
 
   @media (min-width: 992px) {
