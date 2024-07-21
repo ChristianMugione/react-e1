@@ -6,8 +6,11 @@ import {
   openModalInfo,
   setToken,
 } from "../../store/storeSlices";
+import dotenv from "dotenv";
 
-axios.defaults.baseURL = "http://localhost:3000/";
+dotenv.config();
+
+axios.defaults.baseURL = process.env.API_URL || "http://localhost:3000/";
 
 export const getProducts = async () => {
   const productsFromLS = window.localStorage.getItem("products");
