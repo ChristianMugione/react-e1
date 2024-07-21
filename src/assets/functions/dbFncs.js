@@ -12,6 +12,8 @@ dotenv.config();
 
 axios.defaults.baseURL = process.env.API_URL;
 
+console.log(axios.defaults.baseURL);
+
 export const getProducts = async () => {
   const productsFromLS = window.localStorage.getItem("products");
   const productsAgeFromLS = window.localStorage.getItem("productsAge");
