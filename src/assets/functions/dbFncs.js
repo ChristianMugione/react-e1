@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-axios.defaults.baseURL = process.env.API_URL || "http://localhost:3000/";
+axios.defaults.baseURL = process.env.API_URL;
 
 export const getProducts = async () => {
   const productsFromLS = window.localStorage.getItem("products");
