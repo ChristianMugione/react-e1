@@ -6,11 +6,11 @@ import {
   openModalInfo,
   setToken,
 } from "../../store/storeSlices";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
-axios.defaults.baseURL = process.env.API_URL;
+axios.defaults.baseURL = "https://ruta-camper-backend.vercel.app/";
 
 console.log(axios.defaults.baseURL);
 
