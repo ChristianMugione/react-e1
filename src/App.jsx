@@ -13,13 +13,28 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { Product } from "./components/Product";
 import { useEffect } from "react";
-import { getProducts } from "./assets/functions/dbFncs";
+import { getProducts, validateToken } from "./assets/functions/dbFncs";
 import { initializeProductList } from "./store/storeSlices";
 import { ModalSignup } from "./components/ModalSignup";
 
 function App() {
   const dispatch = useDispatch();
   const modalIsOpened = useSelector((state) => state.modalSignup.modalIsOpened);
+  const appStatus = useSelector((state) => state.appStatus);
+
+  useEffect(() => {
+    //si hay token que lo valide al back. si no se valida que lo seteeen null en el store
+    if (appStatus.token) {
+      const response = validateToken(appStatus.token);
+      console.log("response: ", response);
+      if (!response) {
+        dispatch(setToken(null));
+        window.localStorage.removeItem("token");
+        console.log("token invalido");
+      }
+      console.log("token valido");
+    }
+  }, [appStatus]);
 
   useEffect(() => {
     const getProductsFnc = async () => {

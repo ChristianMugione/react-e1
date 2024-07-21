@@ -1,13 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { totalCalc, cartQuantity, addToLS } from "./SlicesFunctions";
 
-const initialState = {
-  products: [],
-};
+export const appStatusSlice = createSlice({
+  name: "appStatus",
+  initialState: {
+    token: window.localStorage.getItem("token") || null,
+    loading: false,
+  },
+  reducers: {
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setToken: (state, action) => {
+      state.token = action.payload;
+    },
+  },
+});
 
 export const productSlice = createSlice({
   name: "productList",
-  initialState,
+  initialState: {
+    products: [],
+  },
   reducers: {
     initializeProductList: (state, action) => {
       state.products = action.payload;
@@ -185,3 +199,4 @@ export const { openModalInfo, closeModalInfo } = modalInfoSlice.actions;
 export const { initializeProductList } = productSlice.actions;
 export const { openModalSignup, closeModalSignup, toggleModalIsRegister } =
   modalSignupSlice.actions;
+export const { setLoading, setToken } = appStatusSlice.actions;

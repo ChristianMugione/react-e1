@@ -25,6 +25,7 @@ export const Header = () => {
     (state) => state.userMenuOpened.userMenuIsOpened
   );
   const cartItemQuantity = useSelector((state) => state.cartList.quantityCart);
+  const appStatus = useSelector((state) => state.appStatus);
 
   const dispatch = useDispatch();
 
@@ -93,6 +94,7 @@ export const Header = () => {
           </div>
           <BsPersonFill
             className="user-icon"
+            style={appStatus.token ? { color: "green" } : { color: "gray" }}
             onClick={() => {
               toggleUserMenuFnc();
             }}

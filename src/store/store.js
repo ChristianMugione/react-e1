@@ -7,6 +7,7 @@ import {
   productSlice,
   userMenuOpen,
   modalSignupSlice,
+  appStatusSlice,
 } from "./storeSlices";
 
 export default configureStore({
@@ -18,5 +19,6 @@ export default configureStore({
     modalInfo: modalInfoSlice.reducer,
     userMenuOpened: userMenuOpen.reducer,
     modalSignup: modalSignupSlice.reducer,
+    appStatus: appStatusSlice.reducer,
   },
 });

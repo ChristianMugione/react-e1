@@ -1,7 +1,11 @@
 import axios from "axios";
 import { milisecondsToMinutes } from "./auxiliar";
 import store from "../../store/store";
-import { closeModalInfo, openModalInfo } from "../../store/storeSlices";
+import {
+  closeModalInfo,
+  openModalInfo,
+  setToken,
+} from "../../store/storeSlices";
 
 axios.defaults.baseURL = "http://localhost:3000/";
 
@@ -59,7 +63,25 @@ export const loginUser = async (userData) => {
     //Guardaar datos del usuario y token en Redux y LS
     console.log(response.data);
     window.localStorage.setItem("token", response.data.token);
+    store.dispatch(setToken(response.data.token));
   } catch (error) {
     console.log(error);
   }
+};
+
+export const validateToken = async (token) => {
+  try {
+    const response = await axios.get(`/verifytoken/${token}`);
+
+    const userInfo = {
+      name: response.data.message._doc.name,
+      email: response.data.message._doc.email,
+      role: response.data.message._doc.role,
+    };
+
+    return userInfo || false;
+  } catch (error) {
+    console.log(error);
+  }
+  return false;
 };
