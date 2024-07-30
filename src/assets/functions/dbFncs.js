@@ -10,9 +10,10 @@ import {
 
 // dotenv.config();
 
-axios.defaults.baseURL = "https://ruta-camper-backend.vercel.app/";
+// axios.defaults.baseURL = "https://ruta-camper-backend.vercel.app/";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-console.log(axios.defaults.baseURL);
+console.log("baseURL: ", axios.defaults.baseURL);
 
 export const getProducts = async () => {
   const productsFromLS = window.localStorage.getItem("products");

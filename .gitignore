@@ -25,3 +25,4 @@ dist-ssr
 e3.txt
 todo.txt
 .env
+.env.production
