@@ -14,8 +14,9 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { Product } from "./components/Product";
 import { useEffect } from "react";
 import { getProducts, validateToken } from "./assets/functions/dbFncs";
-import { initializeProductList } from "./store/storeSlices";
+import { initializeProductList, setUserId } from "./store/storeSlices";
 import { ModalSignup } from "./components/ModalSignup";
+import { Orders } from "./components/Orders";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,8 @@ function App() {
         }
         console.log("token valido");
         window.localStorage.setItem("user-info", JSON.stringify(response));
+        window.localStorage.setItem("userId", response.userId);
+        // store.dispatch(setUserId(response.userId));
       };
       validateTokenFnc();
     }
@@ -49,6 +52,16 @@ function App() {
     getProductsFnc();
   }, []);
 
+  //userEffect que obtenga userId de localStorage y lo setee en el store en caso de que exista
+  useEffect(() => {
+    const userId = window.localStorage.getItem("userId");
+    if (userId && userId !== "null" && userId !== "undefined") {
+      store.dispatch(setUserId(userId));
+    } else {
+      store.dispatch(setUserId(null));
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
       <AppWrapper>
@@ -61,6 +74,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUsSection />} />
           <Route path="/services" element={<ServicesSection />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="/*" element={<HeroSection />} />
         </Routes>
         <Footer />

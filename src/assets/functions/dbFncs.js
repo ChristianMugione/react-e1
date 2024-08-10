@@ -4,6 +4,7 @@ import store from "../../store/store";
 import {
   closeModalInfo,
   openModalInfo,
+  setOrders,
   setToken,
   setUserId,
 } from "../../store/storeSlices";
@@ -70,6 +71,7 @@ export const loginUser = async (userData) => {
     //Guardaar datos del usuario y token en Redux y LS
     console.log(response.data);
     window.localStorage.setItem("token", response.data.token);
+    window.localStorage.setItem("userId", response.data.userId);
     store.dispatch(setToken(response.data.token));
     store.dispatch(setUserId(response.data.userId));
   } catch (error) {
@@ -98,6 +100,7 @@ export const validateToken = async (token) => {
 };
 
 export const addOrder = async (cartItems, totalCart, userId) => {
+  const shippingCost = (totalCart * 5) / 100;
   const items = cartItems.map((item) => {
     return {
       title: item.title,
@@ -117,11 +120,22 @@ export const addOrder = async (cartItems, totalCart, userId) => {
       location: "Bahia Blanca",
       phone: "2914616154",
     },
-    total: (totalCart * 5) / 100, //El costo de envío es el 5%
+    total: totalCart + shippingCost,
   };
   try {
     const response = await axios.post("/order", order);
     return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getOrders = async (userId) => {
+  try {
+    const response = await axios.get(`/orders/${userId}`);
+    store.dispatch(setOrders(response.data));
+    window.localStorage.setItem("orders", JSON.stringify(response.data));
+    console.log(response.data);
   } catch (error) {
     console.log(error);
   }
