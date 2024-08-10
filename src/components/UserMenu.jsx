@@ -32,6 +32,11 @@ export const UserMenu = () => {
     dispatch(setToken(null));
   };
 
+  const showOrders = () => {
+    dispatch(closeUserMenu());
+    navigate("/orders");
+  };
+
   return (
     <StyledUserMenu>
       <ul className="user-menu">
@@ -47,13 +52,7 @@ export const UserMenu = () => {
         )}
         {appStatus.token && (
           <>
-            <li
-              className="orders"
-              onClick={() => {
-                dispatch(closeUserMenu());
-                navigate("/orders");
-              }}
-            >
+            <li className="orders" onClick={showOrders}>
               Pedidos
             </li>
             <li className="logout" onClick={logoutHandler}>
