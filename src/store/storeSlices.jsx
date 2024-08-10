@@ -6,6 +6,7 @@ export const appStatusSlice = createSlice({
   initialState: {
     token: window.localStorage.getItem("token") || null,
     loading: false,
+    userId: null,
   },
   reducers: {
     setLoading: (state, action) => {
@@ -13,6 +14,9 @@ export const appStatusSlice = createSlice({
     },
     setToken: (state, action) => {
       state.token = action.payload;
+    },
+    setUserId: (state, action) => {
+      state.userId = action.payload;
     },
   },
 });
@@ -199,4 +203,4 @@ export const { openModalInfo, closeModalInfo } = modalInfoSlice.actions;
 export const { initializeProductList } = productSlice.actions;
 export const { openModalSignup, closeModalSignup, toggleModalIsRegister } =
   modalSignupSlice.actions;
-export const { setLoading, setToken } = appStatusSlice.actions;
+export const { setLoading, setToken, setUserId } = appStatusSlice.actions;

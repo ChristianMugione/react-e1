@@ -10,10 +10,15 @@ import { CartItem } from "./CartItem";
 import { ModalConfirm } from "./ModalConfirm";
 import { useEffect, useState } from "react";
 import { StyledCart } from "../styles/CartStyles";
+import { addOrder } from "../assets/functions/dbFncs";
 
 export const Cart = () => {
   //Obtengo la lista de productos del carrito en Redux
   const cartItems = useSelector((state) => state.cartList.products);
+  const totalCart = useSelector((state) => state.cartList.totalCart);
+
+  //Obtengo el userId del store
+  const userId = useSelector((state) => state.appStatus.userId);
 
   //Obtengo el total de productos del carrito
   const total = useSelector((state) => state.cartList.totalCart);
@@ -24,8 +29,6 @@ export const Cart = () => {
   const [modalMsg, setModalMsg] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [action, setAction] = useState("");
-
-  useEffect(() => {}, []);
 
   //Función para cerrar el carrito cuando clickean el boton de cerrarlo
   const doToggleCart = () => {
@@ -58,7 +61,9 @@ export const Cart = () => {
   };
 
   //Ejecuta el reducer para procesar la compra y cierra el modal de confirmacion
-  const processCart = () => {
+  const processCart = async () => {
+    const response = await addOrder(cartItems, totalCart, userId);
+    console.log(response);
     dispatch(processTheCart());
     setShowModal(false);
   };
@@ -81,7 +86,7 @@ export const Cart = () => {
   return (
     <StyledCart>
       <BsXCircle className="close-btn" onClick={doToggleCart} />
-      <h2>Su Carrito</h2>
+      <h2>Su Carrito{!cartItems.length && " Está Vacío"}</h2>
 
       <div className="cart-items">
         {cartItems.map((item) => {
@@ -98,7 +103,7 @@ export const Cart = () => {
           );
         })}
 
-        {cartItems.length ? (
+        {cartItems.length && (
           <>
             <div>Total: {total}</div>
             <div className="bottom-buttons">
@@ -106,8 +111,6 @@ export const Cart = () => {
               <button onClick={confirmProcessCart}>FINALIZAR COMPRA</button>
             </div>
           </>
-        ) : (
-          <h2>está vacío</h2>
         )}
       </div>
       {showModal && (

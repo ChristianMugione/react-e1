@@ -110,7 +110,6 @@ const Register = () => {
 
 const Login = () => {
   const dispatch = useDispatch();
-
   const formik = useFormik({
     initialValues: {
       usuario: "",
@@ -123,10 +122,7 @@ const Login = () => {
       loginUser(values);
       dispatch(closeModalSignup());
       dispatch(closeUserMenu());
-      // dispatch(openModalInfo({ msg: "Ingreso correcto" }));
-      // setTimeout(() => {
-      //   dispatch(closeModalInfo());
-      // }, 5000);
+
       openModalInfoAndClose("Ingreso correcto", 5);
       formik.resetForm();
     },

@@ -25,14 +25,18 @@ function App() {
   useEffect(() => {
     //si hay token que lo valide al back. si no se valida que lo seteeen null en el store
     if (appStatus.token) {
-      const response = validateToken(appStatus.token);
-      console.log("response: ", response);
-      if (!response) {
-        dispatch(setToken(null));
-        window.localStorage.removeItem("token");
-        console.log("token invalido");
-      }
-      console.log("token valido");
+      const validateTokenFnc = async () => {
+        const response = await validateToken(appStatus.token);
+        console.log("response: ", response);
+        if (!response) {
+          dispatch(setToken(null));
+          window.localStorage.removeItem("token");
+          console.log("token invalido");
+        }
+        console.log("token valido");
+        window.localStorage.setItem("user-info", JSON.stringify(response));
+      };
+      validateTokenFnc();
     }
   }, [appStatus]);
 

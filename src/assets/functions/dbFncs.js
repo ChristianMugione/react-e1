@@ -5,6 +5,7 @@ import {
   closeModalInfo,
   openModalInfo,
   setToken,
+  setUserId,
 } from "../../store/storeSlices";
 // import dotenv from "dotenv";
 
@@ -70,6 +71,7 @@ export const loginUser = async (userData) => {
     console.log(response.data);
     window.localStorage.setItem("token", response.data.token);
     store.dispatch(setToken(response.data.token));
+    store.dispatch(setUserId(response.data.userId));
   } catch (error) {
     console.log(error);
   }
@@ -79,7 +81,10 @@ export const validateToken = async (token) => {
   try {
     const response = await axios.get(`/verifytoken/${token}`);
 
+    console.log("AEAEAEAE ---- ", response.data.message._doc);
+
     const userInfo = {
+      id: response.data.message._doc._id,
       name: response.data.message._doc.name,
       email: response.data.message._doc.email,
       role: response.data.message._doc.role,
@@ -90,4 +95,34 @@ export const validateToken = async (token) => {
     console.log(error);
   }
   return false;
+};
+
+export const addOrder = async (cartItems, totalCart, userId) => {
+  const items = cartItems.map((item) => {
+    return {
+      title: item.title,
+      id: item.index,
+      description: item.title,
+      price: item.price,
+      quantity: item.quantity,
+    };
+  });
+  const order = {
+    userId: userId,
+    items: items,
+    price: totalCart,
+    shippingDetail: {
+      name: "Carlos Perez",
+      address: "Sronson 333",
+      location: "Bahia Blanca",
+      phone: "2914616154",
+    },
+    total: (totalCart * 5) / 100, //El costo de envío es el 5%
+  };
+  try {
+    const response = await axios.post("/order", order);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };

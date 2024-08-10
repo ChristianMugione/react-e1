@@ -59,6 +59,7 @@ export const StyledHeader = styled.header`
 
   & img {
     width: 100px;
+
     margin-left: 20px;
   }
 

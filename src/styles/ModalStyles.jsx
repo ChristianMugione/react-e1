@@ -61,7 +61,7 @@ export const StyledModalInfo = styled.div`
   text-transform: uppercase;
   padding: 8px 0;
   display: flex;
-  bottom: ${(props) => (props.isOpen === "true" ? "0" : "-50px")};
+  /* bottom: ${(props) => (props.isOpen === "true" ? "0" : "-50px")}; */
   transition: all 0.2s;
   justify-content: center;
 `;
