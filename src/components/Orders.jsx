@@ -1,5 +1,3 @@
-//component to show orders
-
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getOrders } from "../assets/functions/dbFncs";

@@ -18,8 +18,6 @@ import {
 import { ModalInfo } from "./ModalInfo";
 import { StyledHeader } from "../styles/HeaderStyles";
 
-import { openCartAnimated } from "../assets/functions/auxiliar";
-
 export const Header = () => {
   const isOpen = useSelector((state) => state.menuOpened.menuIsOpened);
   const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);

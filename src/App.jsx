@@ -23,7 +23,6 @@ import { ModalSignup } from "./components/ModalSignup";
 import { Orders } from "./components/Orders";
 import { Blurer } from "./components/Blurer";
 import { Cart } from "./components/Cart";
-import { closeCartAnimated } from "./assets/functions/auxiliar";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,8 +43,8 @@ function App() {
         }
         console.log("token valido");
         window.localStorage.setItem("user-info", JSON.stringify(response));
-        window.localStorage.setItem("userId", response.userId);
-        // store.dispatch(setUserId(response.userId));
+        window.localStorage.setItem("userId", response.id);
+        store.dispatch(setUserId(response.id));
       };
       validateTokenFnc();
     }

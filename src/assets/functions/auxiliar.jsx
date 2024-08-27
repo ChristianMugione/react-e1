@@ -35,8 +35,3 @@ export const closeCartAnimated = () => {
   //   store.dispatch(closeCart());
   // }, 500);
 };
-
-export const openCartAnimated = () => {
-  // store.dispatch(openCart());
-  store.dispatch(showCartOn());
-};

@@ -133,6 +133,7 @@ export const addOrder = async (cartItems, totalCart, userId) => {
 };
 
 export const getOrders = async (userId) => {
+  if (!userId) return;
   try {
     const response = await axios.get(`/orders/${userId}`);
     store.dispatch(setOrders(response.data));
