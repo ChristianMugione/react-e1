@@ -1,28 +1,34 @@
 import styled from "styled-components";
 
 export const StyledCart = styled.div`
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 100%;
-  height: 80dvh;
-  background-color: azure;
-  z-index: 0;
+  position: fixed;
+  top: 0;
+  /* right: -100px; */
+  width: 320px;
+  height: 100dvh;
+  background-color: #e4e6fc;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
+  box-shadow: 0 0 3px gray;
+  transition: all 0.5s;
+  z-index: 10;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .close-btn {
     font-size: 22px;
     position: absolute;
-    top: 80px;
+    top: 20px;
     right: 20px;
     cursor: pointer;
   }
 
   h2 {
-    margin-top: 80px;
+    /* margin-top: 80px; */
   }
 
   .cart-items {
@@ -43,24 +49,33 @@ export const StyledCart = styled.div`
 
 export const CartItemStyled = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 8px;
-  gap: 8px;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* padding-right: 8px; */
+  /* gap: 8px; */
   background-color: aliceblue;
   border: 1px solid gray;
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
+  color: black;
 
   img {
-    width: 100px;
-    max-width: 15%;
-    border-radius: 8px;
+    width: 100%;
+    height: 100px;
+    margin-left: unset;
+    object-fit: cover;
+    /* max-width: 15%; */
+    /* border-radius: 8px; */
   }
 
   .title {
-    max-width: 30%;
+    max-width: 95%;
+    font-size: 0.8em;
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   button {

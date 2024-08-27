@@ -1,17 +1,17 @@
 import store from "../../store/store";
-import { closeModalInfo, openModalInfo } from "../../store/storeSlices";
+import {
+  closeCart,
+  closeModalInfo,
+  openCart,
+  openModalInfo,
+  showCartOff,
+  showCartOn,
+} from "../../store/storeSlices";
 
 export const toCurrency = (num) => {
-  const formatOptions = {
-    style: "currency",
-    currency: "ARS",
-    minimumFractionDigits: 2,
-  };
+  const response = Math.trunc(num * 100) / 100;
 
-  const currencyFormat = new Intl.NumberFormat("es-ES", formatOptions);
-  const response = currencyFormat.format(num);
-
-  return response;
+  return "$ " + response.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 //Function that convert Date.now() number to minutes
@@ -22,9 +22,21 @@ export const milisecondsToMinutes = (miliseconds) => {
 };
 
 //Function that take a message and a time in seconds and open modal with message and close it after that time
-export const openModalInfoAndClose = (message, time) => {
-  store.dispatch(openModalInfo({ msg: message }));
+export const openModalInfoAndClose = (message, time, good = true) => {
+  store.dispatch(openModalInfo({ msg: message, good }));
   setTimeout(() => {
     store.dispatch(closeModalInfo());
   }, time * 1000);
+};
+
+export const closeCartAnimated = () => {
+  store.dispatch(showCartOff());
+  // setTimeout(() => {
+  //   store.dispatch(closeCart());
+  // }, 500);
+};
+
+export const openCartAnimated = () => {
+  // store.dispatch(openCart());
+  store.dispatch(showCartOn());
 };

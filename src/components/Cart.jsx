@@ -16,6 +16,12 @@ export const Cart = () => {
   //Obtengo la lista de productos del carrito en Redux
   const cartItems = useSelector((state) => state.cartList.products);
   const totalCart = useSelector((state) => state.cartList.totalCart);
+  const showCart = useSelector((state) => state.cartOpened.cartIsOpened);
+  console.log(showCart);
+
+  useEffect(() => {
+    console.log("showCart: ", showCart);
+  }, [showCart]);
 
   //Obtengo el userId del store
   const userId = useSelector((state) => state.appStatus.userId);
@@ -84,26 +90,25 @@ export const Cart = () => {
   };
 
   return (
-    <StyledCart>
+    <StyledCart style={{ right: showCart ? "0" : "-320px" }}>
       <BsXCircle className="close-btn" onClick={doToggleCart} />
       <h2>Su Carrito{!cartItems.length && " Está Vacío"}</h2>
-
       <div className="cart-items">
-        {cartItems.map((item) => {
-          console.log(item);
-          return (
-            <CartItem
-              key={item.index}
-              index={item.index}
-              image={item.image}
-              title={item.title}
-              price={item.price}
-              quantity={item.quantity}
-            />
-          );
-        })}
-
-        {cartItems.length && (
+        {cartItems.length > 0 &&
+          cartItems.map((item) => {
+            console.log(item);
+            return (
+              <CartItem
+                key={item.index}
+                index={item.index}
+                image={item.image}
+                title={item.title}
+                price={item.price}
+                quantity={item.quantity}
+              />
+            );
+          })}
+        {cartItems.length > 0 && (
           <>
             <div>Total: {total}</div>
             <div className="bottom-buttons">

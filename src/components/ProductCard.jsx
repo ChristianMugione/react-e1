@@ -25,26 +25,24 @@ export const ProductCard = ({ index, image, title, price }) => {
     setShowModal(false);
   };
 
+  const goToProduct = () => {
+    navigate(`/product/${index}`);
+  };
+
   return (
     <StyledProduct>
-      <div className="product-info">
+      <div className="product-info" onClick={goToProduct}>
         <img
           className="image"
           src={image ? image : "/imagen-no-disponible.png"}
           alt={title}
         />
         <h3 className="title">{title}</h3>
-        <p className="price">{toCurrency(price)}</p>
       </div>
       <div className="btns">
+        <p className="price">{toCurrency(price)}</p>
         <button onClick={confirmAdd}>Agregar</button>
-        <button
-          onClick={() => {
-            navigate(`/product/${index}`);
-          }}
-        >
-          Ver
-        </button>
+        {/* <button onClick={goToProduct}>Ver</button> */}
       </div>
       {showModal && (
         <ModalConfirm

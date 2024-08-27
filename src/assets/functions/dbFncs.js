@@ -1,5 +1,5 @@
 import axios from "axios";
-import { milisecondsToMinutes } from "./auxiliar";
+import { milisecondsToMinutes, openModalInfoAndClose } from "./auxiliar";
 import store from "../../store/store";
 import {
   closeModalInfo,
@@ -74,8 +74,10 @@ export const loginUser = async (userData) => {
     window.localStorage.setItem("userId", response.data.userId);
     store.dispatch(setToken(response.data.token));
     store.dispatch(setUserId(response.data.userId));
+    openModalInfoAndClose("Ingreso correcto", 3, true);
   } catch (error) {
     console.log(error);
+    openModalInfoAndClose("Ingreso incorrecto", 3, false);
   }
 };
 

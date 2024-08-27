@@ -24,6 +24,11 @@ export const StyledProductSection = styled.div`
     margin: 0 2px;
   }
 
+  button:hover {
+    background-color: white;
+    color: black;
+  }
+
   .cards {
     width: 90%;
     display: flex;

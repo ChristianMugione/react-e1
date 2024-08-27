@@ -55,13 +55,12 @@ export const StyledModalInfo = styled.div`
   left: 0;
   width: 100%;
   min-height: 25px;
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
   color: white;
   font-weight: 600;
   text-transform: uppercase;
   padding: 8px 0;
   display: flex;
-  /* bottom: ${(props) => (props.isOpen === "true" ? "0" : "-50px")}; */
   transition: all 0.2s;
   justify-content: center;
 `;

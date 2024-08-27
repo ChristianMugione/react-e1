@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 import { BsTwitter, BsInstagram, BsYoutube, BsFacebook } from "react-icons/bs";
 
 export const Footer = () => (
-  <div className="footer">
+  <footer className="footer">
     <img src={logo} alt="" />
     <ul className="contact">
       <li>
@@ -24,5 +24,5 @@ export const Footer = () => (
         <span>rutacamper</span>
       </li>
     </ul>
-  </div>
+  </footer>
 );

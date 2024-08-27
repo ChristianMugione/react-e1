@@ -23,7 +23,7 @@ export const Contact = () => {
       //   dispatch(closeModalInfo());
       // }, 5000);
 
-      openModalInfoAndClose("Contacto enviado", 3);
+      openModalInfoAndClose("Contacto enviado", 3, true);
 
       formik.resetForm();
     },

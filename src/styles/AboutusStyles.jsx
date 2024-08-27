@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const StyledAboutUs = styled.section`
   background: linear-gradient(45deg, #3f5573, #7395d9);
-  padding: 60px 0;
+  padding: 60px 0 0 0;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  /* height: 80vh; */
 
   /* gap: 50px; */
   margin-top: 0;

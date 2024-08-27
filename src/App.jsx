@@ -12,16 +12,24 @@ import store from "./store/store";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { Product } from "./components/Product";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { getProducts, validateToken } from "./assets/functions/dbFncs";
-import { initializeProductList, setUserId } from "./store/storeSlices";
+import {
+  closeCart,
+  initializeProductList,
+  setUserId,
+} from "./store/storeSlices";
 import { ModalSignup } from "./components/ModalSignup";
 import { Orders } from "./components/Orders";
+import { Blurer } from "./components/Blurer";
+import { Cart } from "./components/Cart";
+import { closeCartAnimated } from "./assets/functions/auxiliar";
 
 function App() {
   const dispatch = useDispatch();
   const modalIsOpened = useSelector((state) => state.modalSignup.modalIsOpened);
   const appStatus = useSelector((state) => state.appStatus);
+  const isCartOpened = useSelector((state) => state.cartOpened.cartIsOpened);
 
   useEffect(() => {
     //si hay token que lo valide al back. si no se valida que lo seteeen null en el store
@@ -62,6 +70,19 @@ function App() {
     }
   }, []);
 
+  const marianoClose = useCallback(() => {
+    // closeCartAnimated();
+    store.dispatch(closeCart());
+  }, []);
+
+  useEffect(() => {
+    if (isCartOpened) {
+      window.addEventListener("scroll", marianoClose);
+    } else {
+      window.removeEventListener("scroll", marianoClose);
+    }
+  }, [isCartOpened]);
+
   return (
     <ErrorBoundary>
       <AppWrapper>
@@ -78,6 +99,9 @@ function App() {
           <Route path="/*" element={<HeroSection />} />
         </Routes>
         <Footer />
+        {isCartOpened && <Blurer />}
+        {/* {isCartOpened && <Cart />} */}
+        <Cart />
       </AppWrapper>
     </ErrorBoundary>
   );

@@ -11,15 +11,8 @@ export const ProductSection = () => {
   const [cat, setCat] = useState("todas");
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const getProductsFnc = async () => {
-  //     const products = await getProducts();
-  //     dispatch(initializeProductList(products));
-  //     console.log(products);
-  //   };
-
-  //   getProductsFnc();
-  // }, []);
+  //cambiar la forma en la que muestro la categoría activa
+  //un usestate que contenga un objeto, y... vamos por ese lado
 
   return (
     <StyledProductSection>

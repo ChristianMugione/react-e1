@@ -25,20 +25,19 @@ export const FeaturedProductCard = ({ index, image, title, price }) => {
     setShowModal(false);
   };
 
+  const goToProduct = () => {
+    navigate(`/product/${index}`);
+  };
+
   return (
     <StyledFeaturedProductCard>
-      <img src={image} alt="" />
-      <h3>{title}</h3>
-      <p>{toCurrency(price)}</p>
+      <div className="top">
+        <img src={image} alt="" onClick={goToProduct} />
+        <h3 onClick={goToProduct}>{title}</h3>
+      </div>
       <div className="btns">
+        <p>{toCurrency(price)}</p>
         <button onClick={confirmAdd}>Agregar</button>
-        <button
-          onClick={() => {
-            navigate(`/product/${index}`);
-          }}
-        >
-          Ver
-        </button>
       </div>
 
       {showModal && (

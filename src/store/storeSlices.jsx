@@ -8,6 +8,7 @@ export const appStatusSlice = createSlice({
     loading: false,
     userId: null,
     orders: [],
+    blur: false,
   },
   reducers: {
     setLoading: (state, action) => {
@@ -21,6 +22,12 @@ export const appStatusSlice = createSlice({
     },
     setOrders: (state, action) => {
       state.orders = action.payload.orders;
+    },
+    setBlur: (state, action) => {
+      state.blur = action.payload;
+    },
+    blurOut: (state) => {
+      state.blur = false;
     },
   },
 });
@@ -114,13 +121,25 @@ export const cartSlice = createSlice({
 
 export const cartOpen = createSlice({
   name: "cartOpened",
-  initialState: { cartIsOpened: false },
+  initialState: {
+    cartIsOpened: false,
+    showCart: false,
+  },
   reducers: {
     toggleCart: (state) => {
       state.cartIsOpened = !state.cartIsOpened;
     },
+    openCart: (state) => {
+      state.cartIsOpened = true;
+    },
     closeCart: (state) => {
       state.cartIsOpened = false;
+    },
+    showCartOn: (state) => {
+      state.showCart = true;
+    },
+    showCartOff: (state) => {
+      state.showCart = false;
     },
   },
 });
@@ -140,15 +159,17 @@ export const userMenuOpen = createSlice({
 
 export const modalInfoSlice = createSlice({
   name: "modalInfo",
-  initialState: { modalIsOpened: false, modalMsg: "" },
+  initialState: { modalIsOpened: false, modalMsg: "", good: true },
   reducers: {
     openModalInfo: (state, action) => {
       state.modalIsOpened = true;
       state.modalMsg = action.payload.msg;
+      state.good = action.payload.good;
     },
     closeModalInfo: (state) => {
       state.modalIsOpened = false;
       state.modalMsg = "";
+      state.good = true;
     },
   },
 });
@@ -200,12 +221,13 @@ export const {
   emptyCart,
   processTheCart,
 } = cartSlice.actions;
-export const { toggleCart, closeCart } = cartOpen.actions;
+export const { toggleCart, closeCart, openCart, showCartOn, showCartOff } =
+  cartOpen.actions;
 export const { toggleUserMenu, closeUserMenu } = userMenuOpen.actions;
 export const { menuToggle, openMenu, closeMenu } = menuOpen.actions;
 export const { openModalInfo, closeModalInfo } = modalInfoSlice.actions;
 export const { initializeProductList } = productSlice.actions;
 export const { openModalSignup, closeModalSignup, toggleModalIsRegister } =
   modalSignupSlice.actions;
-export const { setLoading, setToken, setUserId, setOrders } =
+export const { setLoading, setToken, setUserId, setOrders, setBlur, blurOut } =
   appStatusSlice.actions;

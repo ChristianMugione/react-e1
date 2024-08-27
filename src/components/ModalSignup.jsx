@@ -123,7 +123,6 @@ const Login = () => {
       dispatch(closeModalSignup());
       dispatch(closeUserMenu());
 
-      openModalInfoAndClose("Ingreso correcto", 5);
       formik.resetForm();
     },
   });

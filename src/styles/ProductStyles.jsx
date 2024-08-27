@@ -3,14 +3,18 @@ import styled from "styled-components";
 export const StyledProduct = styled.div`
   width: 100%;
   max-width: 250px;
-  padding: 8px;
+  /* padding: 8px; */
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   background-color: #fafafa50;
   border-radius: 8px;
   margin: 6px 0;
   gap: 8px;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px 0 #0005;
 
   .product-info {
     display: flex;
@@ -20,26 +24,35 @@ export const StyledProduct = styled.div`
   }
 
   .image {
-    width: 150px;
+    /* width: 150px; */
+    width: 100%;
     aspect-ratio: 1/1;
-    border-radius: 8px;
-    box-shadow: 0 0 5px 0 black;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 0 5px 0 black; */
+    cursor: pointer;
     // width: 100%;
+  }
+
+  .title {
+    width: 95%;
+    cursor: pointer;
+    text-align: center;
   }
 
   .title,
   .price {
     margin-block-start: 0;
     margin-block-end: 0;
+    font-size: 0.9em;
+    color: #1a1a1a;
   }
 
-  @media (min-width: 576px) {
-  }
-
-  @media (min-width: 768px) {
-  }
-
-  @media (min-width: 992px) {
+  .btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
   }
 `;
 
@@ -68,37 +81,57 @@ export const StyledFeaturedProducts = styled.section`
 `;
 
 export const StyledFeaturedProductCard = styled.div`
-  background-color: #000000aa;
+  background-color: #00000022;
   width: 120px;
-  border: 1px solid white;
-  border-radius: 12px;
+  /* border: 1px solid white; */
+  border-radius: 4px;
   color: white;
   font-size: 10px;
   padding: 4px;
   flex-shrink: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  /* box-shadow: 10px 10px 3px -1px black; */
 
   img {
     width: 100%;
     height: 80px;
     object-fit: cover;
     object-position: center;
-    border-radius: 8px;
+    border-radius: 2px;
+    cursor: pointer;
   }
 
   h3 {
-    margin: 0;
+    margin: 0 2px;
+    font-size: 1em;
+    font-weight: 300;
+    text-transform: uppercase;
+    white-space: wrap;
+    overflow: hidden;
+    cursor: pointer;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-shadow: 1px 1px 1px black;
   }
 
   .btns {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 6px;
   }
 
   button {
     background-color: steelblue;
     transition: all 0.5s;
+    /* padding-top: 0; */
+    /* padding-bottom: 0; */
+    padding-inline: 4px;
+    line-height: 1;
 
     &:hover {
       background-color: white;
@@ -125,6 +158,7 @@ export const StyledProductInfo = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #1a1a1a;
   }
 
   h1 {

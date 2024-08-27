@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { StyledUl } from "../styles/NavBarStyles";
 import { Link } from "react-router-dom";
+import { closeCart } from "../store/storeSlices";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -8,6 +9,7 @@ const NavBar = () => {
     if (window.innerWidth < 768) {
       dispatch(closeMenu());
     }
+    dispatch(closeCart());
   };
 
   return (

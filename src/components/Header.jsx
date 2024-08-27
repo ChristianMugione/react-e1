@@ -16,7 +16,9 @@ import {
   closeCart,
 } from "../store/storeSlices";
 import { ModalInfo } from "./ModalInfo";
-import { Blurer, StyledHeader } from "../styles/HeaderStyles";
+import { StyledHeader } from "../styles/HeaderStyles";
+
+import { openCartAnimated } from "../assets/functions/auxiliar";
 
 export const Header = () => {
   const isOpen = useSelector((state) => state.menuOpened.menuIsOpened);
@@ -63,6 +65,7 @@ export const Header = () => {
 
   const toggleCartOpened = () => {
     dispatch(toggleCart());
+    // openCartAnimated();
     dispatch(closeUserMenu());
     dispatch(closeMenu());
   };
@@ -75,8 +78,9 @@ export const Header = () => {
 
   return (
     <>
-      {isOpen && <Blurer onClick={closeMenu} />}
       <StyledHeader>
+        {/* {isOpen && <Blurer />} */}
+
         <img src={logo} alt="Logo" />
         <div className="nav-cart">
           <BurgerMenu />
@@ -86,6 +90,7 @@ export const Header = () => {
               className="cart-icon"
               onClick={() => {
                 toggleCartOpened();
+                //poner showCart en true?
               }}
             />
             {cartItemQuantity > 0 && (
@@ -100,7 +105,7 @@ export const Header = () => {
             }}
           />
         </div>
-        {isCartOpened && <Cart />}
+
         {userMenuOpened && <UserMenu />}
         <ModalInfo />
       </StyledHeader>
