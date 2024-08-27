@@ -4,7 +4,7 @@ export const totalCalc = (productArray) => {
     response += item.price * item.quantity;
   });
 
-  return Number.parseFloat(response).toFixed(2);
+  return Number(Number.parseFloat(response).toFixed(2));
 };
 
 export const cartQuantity = (productArray) => {

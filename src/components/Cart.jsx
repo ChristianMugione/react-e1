@@ -5,6 +5,7 @@ import {
   toggleCart,
   emptyCart,
   processTheCart,
+  closeCart,
 } from "../store/storeSlices";
 import { CartItem } from "./CartItem";
 import { ModalConfirm } from "./ModalConfirm";
@@ -25,9 +26,6 @@ export const Cart = () => {
 
   //Obtengo el userId del store
   const userId = useSelector((state) => state.appStatus.userId);
-
-  //Obtengo el total de productos del carrito
-  const total = useSelector((state) => state.cartList.totalCart);
 
   const dispatch = useDispatch();
 
@@ -68,10 +66,15 @@ export const Cart = () => {
 
   //Ejecuta el reducer para procesar la compra y cierra el modal de confirmacion
   const processCart = async () => {
-    const response = await addOrder(cartItems, totalCart, userId);
-    console.log(response);
-    dispatch(processTheCart());
-    setShowModal(false);
+    try {
+      const response = await addOrder(cartItems, totalCart, userId);
+      console.log(response);
+      dispatch(processTheCart());
+      setShowModal(false);
+      dispatch(closeCart());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //Segun la acción confirmada ejecuta la función correspondiente
@@ -110,7 +113,7 @@ export const Cart = () => {
           })}
         {cartItems.length > 0 && (
           <>
-            <div>Total: {total}</div>
+            <div>Total: {totalCart}</div>
             <div className="bottom-buttons">
               <button onClick={confirmDeleteAll}>VACIAR CARRITO</button>
               <button onClick={confirmProcessCart}>FINALIZAR COMPRA</button>

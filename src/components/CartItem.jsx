@@ -26,13 +26,13 @@ export const CartItem = (props) => {
     <CartItemStyled>
       <img src={props.image} alt={props.title} />
       <p className="title">{props.title}</p>
-      <p>
+      <p className="quantity">
         <button onClick={substractItem}>-</button>
         {props.quantity}
         <button onClick={addOneItem}>+</button>
+        <BsTrash onClick={removeItem} className="trash" />
       </p>
-      <p>{toCurrency(props.price)}</p>
-      <BsTrash onClick={removeItem} className="trash" />
+      <p>{toCurrency(props.price * props.quantity)}</p>
     </CartItemStyled>
   );
 };

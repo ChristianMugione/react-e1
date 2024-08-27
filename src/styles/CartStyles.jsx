@@ -48,11 +48,11 @@ export const StyledCart = styled.div`
 `;
 
 export const CartItemStyled = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  /* justify-content: space-between; */
-  /* align-items: center; */
+  /* justify-content: center; */
+  align-items: center;
   /* padding-right: 8px; */
   /* gap: 8px; */
   background-color: aliceblue;
@@ -76,6 +76,14 @@ export const CartItemStyled = styled.div`
     /* font-weight: bold; */
     text-transform: uppercase;
     font-weight: bold;
+  }
+
+  .quantity {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 
   button {
