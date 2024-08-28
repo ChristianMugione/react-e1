@@ -103,6 +103,7 @@ export const validateToken = async (token) => {
 
 export const addOrder = async (cartItems, totalCart, userId) => {
   const shippingCost = (totalCart * 5) / 100;
+
   const items = cartItems.map((item) => {
     return {
       title: item.title,
@@ -112,6 +113,9 @@ export const addOrder = async (cartItems, totalCart, userId) => {
       quantity: item.quantity,
     };
   });
+
+  const total = parseInt((totalCart + shippingCost) * 100) / 100;
+
   const order = {
     userId: userId,
     items: items,
@@ -122,8 +126,9 @@ export const addOrder = async (cartItems, totalCart, userId) => {
       location: "Bahia Blanca",
       phone: "2914616154",
     },
-    total: totalCart + shippingCost,
+    total,
   };
+
   try {
     const response = await axios.post("/order", order);
     return response.data;

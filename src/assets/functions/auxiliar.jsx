@@ -35,3 +35,24 @@ export const closeCartAnimated = () => {
   //   store.dispatch(closeCart());
   // }, 500);
 };
+
+export const prettyDate = (date) => {
+  const dateConverted = new Date(date);
+  const month = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
+  return (
+    dateConverted.getUTCDate() + " de " + month[dateConverted.getUTCMonth()]
+  );
+};
