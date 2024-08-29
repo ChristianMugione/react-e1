@@ -20,8 +20,7 @@ export const StyledOrders = styled.section`
   }
 
   .orders {
-    width: 90%;
-    background-color: white;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,6 +46,8 @@ export const StyledOrders = styled.section`
     justify-content: center;
     align-items: center;
     /* gap: 20px; */
+    background-color: white;
+    border-radius: 8px;
 
     h3 {
       color: gray;
