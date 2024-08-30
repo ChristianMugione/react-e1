@@ -1,6 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { StyledUserMenu } from "../styles/StyledUserMenu";
-import { closeUserMenu, openModalSignup, setToken } from "../store/storeSlices";
+import {
+  closeUserMenu,
+  openModalSignup,
+  setOrders,
+  setToken,
+  setUserId,
+} from "../store/storeSlices";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +27,7 @@ export const UserMenu = () => {
 
   const loginHandler = () => {
     dispatch(openModalSignup({ modalIsOpened: true, modalIsRegister: false }));
+    navigate("/");
   };
 
   const signupHandler = () => {
@@ -30,6 +37,9 @@ export const UserMenu = () => {
   const logoutHandler = () => {
     window.localStorage.removeItem("token");
     dispatch(setToken(null));
+    dispatch(setUserId(null));
+    dispatch(setOrders([]));
+    navigate("/");
   };
 
   const showOrders = () => {
@@ -52,13 +62,13 @@ export const UserMenu = () => {
         )}
         {appStatus.token && (
           <>
+            <li className="user-name">{userInfo.name}</li>
             <li className="orders" onClick={showOrders}>
               Pedidos
             </li>
             <li className="logout" onClick={logoutHandler}>
               Logout
             </li>
-            <span>({userInfo.name})</span>
           </>
         )}
       </ul>

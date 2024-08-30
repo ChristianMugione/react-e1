@@ -40,4 +40,8 @@ export const StyledUserMenu = styled.div`
     top: 0;
     left: 0;
   }
+
+  span {
+    margin-top: 0;
+  }
 `;

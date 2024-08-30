@@ -38,15 +38,9 @@ const Register = () => {
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
-      //call async function addUser
-
       addUser(values);
       dispatch(closeUserMenu());
       dispatch(closeModalSignup());
-      // dispatch(openModalInfo({ msg: "Usuario creado" }));
-      // setTimeout(() => {
-      //   dispatch(closeModalInfo());
-      // }, 5000);
       openModalInfoAndClose("Usuario creado", 5);
       formik.resetForm();
     },
@@ -66,7 +60,9 @@ const Register = () => {
             value={formik.values.usuario}
             {...formik.getFieldProps("usuario")}
           />
-          <div className="error-message">{formik.errors.usuario}</div>
+          {formik.errors.usuario && formik.touched.usuario && (
+            <div className="error-message">{formik.errors.usuario}</div>
+          )}
         </div>
         <div className="input">
           <input
@@ -77,7 +73,9 @@ const Register = () => {
             value={formik.values.email}
             {...formik.getFieldProps("email")}
           />
-          <div className="error-message">{formik.errors.email}</div>
+          {formik.errors.email && formik.touched.email && (
+            <div className="error-message">{formik.errors.email}</div>
+          )}
         </div>
         <div className="input">
           <input
@@ -88,7 +86,9 @@ const Register = () => {
             value={formik.values.password}
             {...formik.getFieldProps("password")}
           />
-          <div className="error-message">{formik.errors.password}</div>
+          {formik.errors.password && formik.touched.password && (
+            <div className="error-message">{formik.errors.password}</div>
+          )}
         </div>
         <div className="input">
           <input
@@ -99,7 +99,9 @@ const Register = () => {
             value={formik.values.password2 || ""}
             {...formik.getFieldProps("password2")}
           />
-          <div className="error-message">{formik.errors.password2}</div>
+          {formik.errors.password2 && formik.touched.password2 && (
+            <div className="error-message">{formik.errors.password2}</div>
+          )}
         </div>
         <button type="submit">Enviar</button>
       </form>

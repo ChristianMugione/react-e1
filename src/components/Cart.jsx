@@ -6,6 +6,7 @@ import {
   emptyCart,
   processTheCart,
   closeCart,
+  setOrders,
 } from "../store/storeSlices";
 import { CartItem } from "./CartItem";
 import { ModalConfirm } from "./ModalConfirm";
@@ -68,10 +69,14 @@ export const Cart = () => {
   const processCart = async () => {
     try {
       const response = await addOrder(cartItems, totalCart, userId);
-      console.log(response);
+
       dispatch(processTheCart());
+
       setShowModal(false);
+
       dispatch(closeCart());
+
+      dispatch(setOrders([]));
     } catch (error) {
       console.log(error);
     }

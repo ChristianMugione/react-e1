@@ -49,18 +49,17 @@ export const addUser = async (user) => {
     password: user.password,
     role: "user",
   };
+
   try {
     const response = await axios.post("/adduser", newUser);
-    store.dispatch(openModalInfo({ msg: "Usuario creado" }));
-    setTimeout(() => {
-      store.dispatch(closeModalInfo());
-    }, 5000);
+
+    openModalInfoAndClose("Usuario creado", 3, true);
+
     return response.data;
   } catch (error) {
-    store.dispatch(openModalInfo({ msg: "Error al registrar usuario" }));
-    setTimeout(() => {
-      store.dispatch(closeModalInfo());
-    }, 5000);
+    openModalInfoAndClose("Error al registrar usuario", 3, false);
+
+    console.log(error);
   }
 };
 
@@ -85,8 +84,6 @@ export const validateToken = async (token) => {
   try {
     const response = await axios.get(`/verifytoken/${token}`);
 
-    console.log("AEAEAEAE ---- ", response.data.message._doc);
-
     const userInfo = {
       id: response.data.message._doc._id,
       name: response.data.message._doc.name,
@@ -106,6 +103,7 @@ export const addOrder = async (cartItems, totalCart, userId) => {
 
   const items = cartItems.map((item) => {
     return {
+      image: item.image, // Change
       title: item.title,
       id: item.index,
       description: item.title,
@@ -137,10 +135,14 @@ export const addOrder = async (cartItems, totalCart, userId) => {
   }
 };
 
-export const getOrders = async (userId) => {
+export const getOrders = async (userId, token) => {
   if (!userId) return;
   try {
-    const response = await axios.get(`/orders/${userId}`);
+    const response = await axios.get(`/orders/${userId}`, {
+      headers: {
+        token,
+      },
+    });
     store.dispatch(setOrders(response.data));
     window.localStorage.setItem("orders", JSON.stringify(response.data));
     console.log(response.data);
