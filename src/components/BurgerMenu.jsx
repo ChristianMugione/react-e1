@@ -34,7 +34,7 @@ const BurgerIcon = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  margin-right: 30px;
+  /* margin-right: 30px; */
 
   @media (min-width: 768px) {
     display: none;

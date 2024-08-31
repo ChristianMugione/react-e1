@@ -11,6 +11,7 @@ import {
   openModalInfo,
 } from "../store/storeSlices";
 import { openModalInfoAndClose } from "../assets/functions/auxiliar";
+import { FaTimesCircle } from "react-icons/fa";
 
 export const ModalSignup = () => {
   const modalSignupisRegister = useSelector(
@@ -49,7 +50,17 @@ const Register = () => {
   return (
     <>
       <h2>Registrarse</h2>
-
+      <FaTimesCircle
+        onClick={() => dispatch(closeModalSignup())}
+        style={{
+          fontSize: "30px",
+          color: "#00000060",
+          cursor: "pointer",
+          position: "absolute",
+          top: "10px",
+          right: "20px",
+        }}
+      />
       <form id="register" onSubmit={formik.handleSubmit}>
         <div className="input">
           <input
@@ -132,7 +143,17 @@ const Login = () => {
   return (
     <>
       <h2>Login</h2>
-
+      <FaTimesCircle
+        onClick={() => dispatch(closeModalSignup())}
+        style={{
+          fontSize: "30px",
+          color: "#00000060",
+          cursor: "pointer",
+          position: "absolute",
+          top: "10px",
+          right: "20px",
+        }}
+      />
       <form id="login" onSubmit={formik.handleSubmit}>
         <div className="input">
           <input

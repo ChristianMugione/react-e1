@@ -49,6 +49,7 @@ export const UserMenu = () => {
 
   return (
     <StyledUserMenu>
+      <span className="back" onClick={() => dispatch(closeUserMenu())}></span>
       <ul className="user-menu">
         {!appStatus.token && (
           <>

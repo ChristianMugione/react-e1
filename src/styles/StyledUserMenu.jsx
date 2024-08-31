@@ -11,6 +11,16 @@ export const StyledUserMenu = styled.div`
   top: 75px;
   right: 10px;
 
+  .back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+  }
+
   .user-menu {
     display: flex;
     flex-direction: column;

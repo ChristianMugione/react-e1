@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { StyledUl } from "../styles/NavBarStyles";
 import { Link } from "react-router-dom";
-import { closeCart } from "../store/storeSlices";
+import { closeCart, closeUserMenu } from "../store/storeSlices";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ const NavBar = () => {
       dispatch(closeMenu());
     }
     dispatch(closeCart());
+    dispatch(closeUserMenu());
   };
 
   return (
