@@ -8,11 +8,7 @@ import {
   setToken,
   setUserId,
 } from "../../store/storeSlices";
-// import dotenv from "dotenv";
 
-// dotenv.config();
-
-// axios.defaults.baseURL = "https://ruta-camper-backend.vercel.app/";
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 console.log("baseURL: ", axios.defaults.baseURL);
@@ -100,6 +96,7 @@ export const validateToken = async (token) => {
 
 export const addOrder = async (cartItems, totalCart, userId) => {
   const shippingCost = (totalCart * 5) / 100;
+  console.log("Agregando compra para: ", userId);
 
   const items = cartItems.map((item) => {
     return {
@@ -111,6 +108,8 @@ export const addOrder = async (cartItems, totalCart, userId) => {
       quantity: item.quantity,
     };
   });
+
+  console.log("items: ", items);
 
   const total = parseInt((totalCart + shippingCost) * 100) / 100;
 
@@ -128,7 +127,17 @@ export const addOrder = async (cartItems, totalCart, userId) => {
   };
 
   try {
-    const response = await axios.post("/order", order);
+    // const response = await axios.post("/order", order);
+    //same but with token
+
+    const response = await axios.post(`/order`, order, {
+      headers: {
+        token: window.localStorage.getItem("token"),
+      },
+    });
+
+    console.log("Respuesta del servidor: ", response.data);
+
     return response.data;
   } catch (error) {
     console.log(error);
